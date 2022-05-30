@@ -200,6 +200,16 @@
       margin-right: 11%;
     }
 
+    .footer {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #123;
+      color: white;
+      text-align: center;
+      margin-top: 10%;
+    }
+
     
 </style>
 </head>
@@ -317,10 +327,21 @@ $sql = "SELECT * FROM transaksi WHERE status != 'Pemesanan Dibatalkan' AND statu
 </div>
 </form>
 
+
+
 <?php 
       }
   }
                     ?>
+
+<div class="footer">
+    <img src="../images/logoc3.png" alt="promo1" class="d-block" style="width:10%; margin-left: 45%; padding-top: 1.5%">
+    <p style="font-size:100%">C3 adalah penyedia jasa cuci maupun servis mobil terkemuka dari Indonesia. Pesan jasa, cek produk, baca </p>
+    <p style="font-size:100%">berita otomotif terbaru dengan nyaman, cepat dan aman tanpa repot.</p>
+    <br>
+    <a href="Contact.php" class="w3-bar-item" style="float: center; text-decoration: none; font-family:texts ; font-size: 100%">- HUBUNGI KAMI - </a>
+    <a href="About.php" class="w3-bar-item" style="float: center; text-decoration: none; font-family:texts ; font-size: 100%"> ABOUT US - </a>
+  </div>
 
 </body>
 </html>

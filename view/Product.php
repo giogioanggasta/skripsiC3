@@ -88,9 +88,10 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
       left: 0;
       bottom: 0;
       width: 100%;
-      background-color: #183059;
+      background-color: #123;
       color: white;
       text-align: center;
+      margin-top: 10%;
     }
   </style>
 </head>
@@ -145,6 +146,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
 
   }
   ?>
+
 
 
 </body>

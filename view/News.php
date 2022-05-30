@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+$db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to database");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
@@ -15,7 +22,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <head>
+<head>
   <style>
     * {
       box-sizing: border-box
@@ -164,7 +171,7 @@
       font-size: 25px;
       color: #868B8E;
       font-style: bold;
-    } 
+    }
 
     a:hover {
       color: #868B8E;
@@ -184,13 +191,22 @@
       color: white;
     }
 
-    
-</style>
+    .footer {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #123;
+      color: white;
+      text-align: center;
+      margin-top: 10%;
+    }
+  </style>
 </head>
+
 <body>
 
 
-<div class="w3-bar w3-white w3-border" id="menu">
+  <div class="w3-bar w3-white w3-border" id="menu">
     <a href="Home-logged.php" class="w3-bar-item"><img src="../images/logoc3.png" style="width:150px"></a>
     <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="float: right; margin-top:2.25%; text-decoration: none; border: none; background-color: white;"><img src="../images/user.png" style="width:30px; margin-left:-5%">
@@ -210,51 +226,35 @@
     <a href="Book.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Book</a>
   </div>
 
-<a class="w3-display-middle" style="color:black;float: center; margin-top: -10%; text-decoration: none;">Berita</a>
+  <a class="w3-display-middle" style="color:black;float: center; margin-top: -10%; text-decoration: none;">Berita</a>
 
-<div class="signup w3-display-middle">
-            <table style="width:50%; color: black; margin-top:20%; margin-left:-3.5%;">
-                <tr>
-                    <td><img src="../images/gantioli2.jpg" style="width:350px; margin-top: 130%"></td>
-                    <td><img src="../images/tuneup.jpg" style="width:350px; margin-top: 130%; margin-left: 15%;"></td>
-                    <td><img src="../images/coating.jpg" style="width:350px; margin-top: 130%; margin-left: 30%;"></td>
-                </tr>
-                <tr>
-                    <td><a href="" style="margin-left:0%; text-decoration: none;">Ganti Oli Mobil</a></td>
-                    <td><a href="" style="margin-left:15%; text-decoration: none;">Tune Up HHO</a></td>
-                    <td><a href="" style="margin-left:30%; text-decoration: none;">Coating Mobil</a></td>
-                </tr>
-                <tr>
-                    <td><a href="" style="margin-left:0%; text-decoration: none; font-family: texts; font-size: 17px;">Ganti Oli Mobil bagi seluruh pemilik kendaraan, baik kendaraan beroda dua maupun roda empat merupakan ritual rutin yang wajib ...</a></td>
-                    <td><a href="" style="margin-left:15%; text-decoration: none; font-family: texts; font-size: 17px;">HHo( Fuel Injector Carbon cleaner) adalah metode membersihkan ruang bakar dengan cara memasukkan ...</a></td>
-                    <td><a href="" style="margin-left:30%; text-decoration: none; font-family: texts; font-size: 17px;">Coating Mobil merupakan sistem aplikasi pelapis cat yang berfungsi melindungi clear coat mobil dengan ...</a></td>
-                </tr>
-                <tr>
-                    <td><a href="" style="margin-left:0%; text-decoration: none; font-family: texts; font-size: 15px; text-align: left;">Read more</a></td>
-                    <td><a href="" style="margin-left:15%; text-decoration: none; font-family: texts; font-size: 15px; text-align: left;">Read more</a></td>
-                    <td><a href="" style="margin-left:30%; text-decoration: none; font-family: texts; font-size: 15px; text-align: left;">Read more</a></td>
-                </tr>
-                <tr>
-                    <td><img src="../images/acmobil.jpg" style="width:350px; margin-top: 15%"></td>
-                    <td><img src="../images/mekanik.jpg" style="width:350px; margin-left: 15%; margin-top: 15%"></td>
-                    <td><img src="../images/salon.jpg" style="width:350px; margin-left: 30%; margin-top: 15%"></td>
-                </tr>
-                <tr>
-                    <td><a href="" style="margin-left:0%; text-decoration: none;">AC Mobil</a></td>
-                    <td><a href="" style="margin-left:15%; text-decoration: none;">Mekanik Mobil</a></td>
-                    <td><a href="" style="margin-left:30%; text-decoration: none;">Salon Mobil</a></td>
-                </tr>
-                <tr>
-                    <td><a href="" style="margin-left:0%; text-decoration: none; font-family: texts; font-size: 17px;">Ganti Oli Mobil bagi seluruh pemilik kendaraan, baik kendaraan beroda dua maupun roda empat merupakan ritual rutin yang wajib ..</a></td>
-                    <td><a href="" style="margin-left:15%; text-decoration: none; font-family: texts; font-size: 17px;">HHo( Fuel Injector Carbon cleaner) adalah metode membersihkan ruang bakar dengan cara memasukkan media cairan atau foam (busa) pembersih….</a></td>
-                    <td><a href="" style="margin-left:30%; text-decoration: none; font-family: texts; font-size: 17px;">Coating Mobil merupakan sistem aplikasi pelapis cat yang berfungsi melindungi clear coat mobil dengan teknologi nano sehingga mampu menutupi …</a></td>
-                </tr>
-                <tr>
-                    <td><a href="" style="margin-left:0%; text-decoration: none; font-family: texts; font-size: 15px; text-align: left;">Read more</a></td>
-                    <td><a href="" style="margin-left:15%; text-decoration: none; font-family: texts; font-size: 15px; text-align: left;">Read more</a></td>
-                    <td><a href="" style="margin-left:30%; text-decoration: none; font-family: texts; font-size: 15px; text-align: left;">Read more</a></td>
-            </table>
-        </div>
+  <?php
+  $sql = "SELECT * FROM berita";
+  $results = mysqli_query($db, $sql) or die(mysqli_error($db));
+
+  while ($row = mysqli_fetch_array($results)) {
+
+  ?>
+    <div class="col-md-4" style="margin-top:10%">
+      <div style="border:1px solid #333; background-color: white;">
+
+        <img src="../model/uploadImage/<?php echo $row['fotoBerita'] ?>" style="width:30%"><br>
+
+        <h3 style="margin-left:5%;"><?php echo $row["namaBerita"] ?> </h3> <br>
+
+
+        <?php echo $row["keteranganBerita"] ?><br>
+
+
+      </div>
+    </div>
+  <?php
+
+  }
+  ?>
+
+
 
 </body>
+
 </html>

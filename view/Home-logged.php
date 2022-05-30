@@ -197,10 +197,33 @@
       left: 0;
       bottom: 0;
       width: 100%;
-      background-color: #183059;
+      background-color: #123;
       color: white;
       text-align: center;
       margin-top: 10%;
+    }
+
+    .teks {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-85%, -100%);
+    }
+
+    .teks button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      background-color: #555;
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      text-align: center;
     }
   </style>
 </head>
@@ -230,11 +253,14 @@
     <a href="Book.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Book</a>
   </div>
 
+  <div class="header">
+    <img src="../images/shop1.jpg" style="width:100%; float:center;">
+    <div class="teks" style="color:white; font-size: 750%">Professional detailing is our specialty</div>
+  </div>
 
 
 
-
-  <div id="demo" class="carousel slide" data-bs-ride="carousel" style="width:80%; margin-left:10%; margin-top:1.5%;">
+  <div id="demo" class="carousel slide" data-bs-ride="carousel" style="width:65%; margin-left:18%; margin-top:5.5%;">
 
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
@@ -263,18 +289,52 @@
     </button>
   </div> <br> <br>
 
-  <h3 style="margin-left:10%">Maps menuju Car Care Center</h3>
-  <div align="center"><div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=C3%20car%20care%20center%20medan&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">google maps html widget</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div>
-    <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div></div>
+
+
+
+  <div class="teksmaps" style="color:black; font-size: 250%; margin-left:10%; margin-top: 5%; padding-bottom:5%">Maps menuju Car Care Center</div>
+  <div align="center">
+    <div class="mapouter">
+      <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=C3%20car%20care%20center%20medan&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br>
+        <style>
+          .mapouter {
+            position: relative;
+            text-align: right;
+            height: 500px;
+            width: 600px;
+          }
+        </style><a href="https://www.embedgooglemap.net">google maps html widget</a>
+        <style>
+          .gmap_canvas {
+            overflow: hidden;
+            background: none !important;
+            height: 500px;
+            width: 600px;
+          }
+        </style>
+      </div>
+    </div>
+    <style>
+      .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        height: 500px;
+        width: 600px;
+      }
+    </style>
+  </div>
+  </div>
+  </div>
 
 
 
   <div class="footer">
     <img src="../images/logoc3.png" alt="promo1" class="d-block" style="width:10%; margin-left: 45%; padding-top: 1.5%">
-    <p>C3 adalah penyedia jasa cuci maupun servis mobil terkemuka dari Indonesia. Pesan jasa, cek produk, baca </p>
-    <p>berita otomotif terbaru dengan nyaman, cepat dan aman tanpa repot.</p>
+    <p style="font-size:150%">C3 adalah penyedia jasa cuci maupun servis mobil terkemuka dari Indonesia. Pesan jasa, cek produk, baca </p>
+    <p style="font-size:150%">berita otomotif terbaru dengan nyaman, cepat dan aman tanpa repot.</p>
     <br>
-    <a href="Contact.php" class="w3-bar-item" style="float: center; text-decoration: none; font-family: texts; font-size: 20px">- HUBUNGI KAMI - </a>
+    <a href="Contact.php" class="w3-bar-item" style="float: center; text-decoration: none; font-family:texts ; font-size: 20px">- HUBUNGI KAMI - </a>
+    <a href="About.php" class="w3-bar-item" style="float: center; text-decoration: none; font-family:texts ; font-size: 20px"> ABOUT US - </a>
   </div>
 
 
