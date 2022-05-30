@@ -1,0 +1,96 @@
+if(isset($_POST['buttonTolak'])){
+    $emailTujuan = $_POST['emailTujuan'];
+    
+    try{
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'giogioanggasta@gmail.com';
+        $mail->Password = 'Jerapah!2';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = '587';
+
+        $mail->setFrom('giogioanggasta@gmail.com');
+        $mail->addAddress('7316049@student.unpar.ac.id');
+
+        $mail->isHTML(true);
+        $mail->Subject = "Pemesanan Dibatalkan";
+        $mail->Body = "<h3>Pembatalan karena ...</h3>";
+        $mail->Body .= "<h5> C3 <br> Address : JL. Monginsidi (sebelah Gereja GBKP), 51, Medan, Anggrung, Medan Polonia, Medan City, North Sumatra 20222 </h5>";
+        $mail->send();
+        $alert = '<span>Message dikirim!</span>';
+    }
+
+    catch(Exception $e){
+        $alert = '<span>Terjadi kesalahan, Message gagal dikirim! </span>';
+    }
+
+
+    <?php
+$db = mysqli_connect('localhost' , 'root', '', 'c3') or die("can't connect to database");
+$s = mysqli_query($db, "SELECT * FROM jasa");
+$data = $s -> fetch_all(MYSQLI_ASSOC);
+?>
+
+        <?php
+                                foreach($data as $r) {
+                                    ?>
+                                    <option value="<?php echo $r['namaJasa']; ?>"><?php echo $r['namaJasa']; ?></option>
+                                    <?php
+                                }
+                            ?> 
+
+        <?php
+        $sql = "SELECT * FROM jasa";
+        $results = mysqli_query($db, $sql) or die( mysqli_error($db));
+        $check = mysqli_num_rows($results);
+        if($check > 0){
+          while($row = mysqli_fetch_array($results))
+            {  ?>
+            var obj = <?php echo $row["totalHarga"]; ?>
+        <?php 
+            }
+        }?>                       
+
+
+
+
+        $file = $_FILES['file'];
+    $fileName = $_FILES['file']['name'];
+    $fileTmpName = $_FILES['file']['tmp_name'];
+    $fileSize = $_FILES['file']['size'];
+    $fileError = $_FILES['file']['error'];
+    $fileType = $_FILES['file']['type'];
+
+
+
+    //File yang boleh di upload extensionnya apa aja
+    $fileExt = explode('.' , $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $allowed = array('jpg', 'jpeg' , 'png', 'pdf');
+
+    if(in_array($fileActualExt, $allowed)){
+        if($fileError === 0){
+            if($fileSize < 500000){
+                $fileNameNew = uniqid(',' , true).".".$fileActualExt;
+                $fileDestination = __DIR__."/uploadImage/".$fileNameNew;
+                move_uploaded_file($fileTmpName, $fileDestination);
+
+
+
+
+
+
+else{
+    echo "File is too big!";
+}
+}
+else{
+echo "There was an error uploading your file";
+}
+}
+else{
+echo "Extension file tidak diperbolehkan (input file JPG, JPEG, PNG, atau PDF only)";
+}
+}
