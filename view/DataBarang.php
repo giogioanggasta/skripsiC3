@@ -159,7 +159,7 @@
 
   <a class="w3-display-middle" style="color:black;float: center; margin-top: -13%; text-decoration: none; font-size: 120%">Tabel Barang</a>
 
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalHapus" style="float:right; margin-top:8%; margin-right: 1%">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalHapus" style="float:right; margin-top:8%; margin-right: 1%; background-color:steelblue">
     Hapus
   </button>
 
@@ -195,7 +195,7 @@
     </div>
   </div>
 
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah" style="float:right; margin-top:8%; margin-right: 2%">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah" style="float:right; margin-top:8%; margin-right: 2%; background-color:steelblue">
     Tambah
   </button>
 
@@ -287,7 +287,7 @@
             <td><?php echo $row["stokBarang"] ?></td>
             <td><?php echo $row["satuan"] ?></td>
             <td><input type="hidden" name="idBarang" value="<?php echo $row["idBarang"];?>"></td>
-            <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalUbah-<?=$row["idBarang"] ?>' name='buttonEdit'>Edit</button></td>
+            <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalUbah-<?=$row["idBarang"] ?>' name='buttonEdit' style="background-color:steelblue">Edit</button></td>
         </tr>
 
 

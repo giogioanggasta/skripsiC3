@@ -149,8 +149,8 @@
     <a href="DataTransaksi.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Transaksi</a>
     <a href="DataPelanggan.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Pelanggan</a>
     <a href="DataJasa.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Jasa</a>
-    <a href="DataBarang.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; color:steelblue;">Produk</a>
-    <a href="DataPromo.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Promo</a>
+    <a href="DataBarang.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; ">Produk</a>
+    <a href="DataPromo.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; color:steelblue;">Promo</a>
     <a href="DataBerita.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Berita</a>
     <a href="DataSupplier.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Supplier</a>
     <a href="DataMembership.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Membership</a>
@@ -159,7 +159,7 @@
 
   <a class="w3-display-middle" style="color:black;float: center; margin-top: -13%; text-decoration: none; font-size: 120%">Tabel Promo</a>
 
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalHapus" style="float:right; margin-top:8%; margin-right: 1%">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalHapus" style="float:right; margin-top:8%; margin-right: 1%; background-color:steelblue">
     Hapus
   </button>
 
@@ -211,7 +211,7 @@
     </div>
   </div>
 
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah" style="float:right; margin-top:8%; margin-right: 2%">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah" style="float:right; margin-top:8%; margin-right: 2%; background-color:steelblue">
     Tambah
   </button>
 
@@ -234,14 +234,14 @@
             <input class="w3-input w3-border" type="text" placeholder="" name="tambahKode">
             <label><b>Nama Promo</b></label>
             <input class="w3-input w3-border" type="text" placeholder="" name="tambahNama">
-            <label><b>Foto Promo</b></label>
-            <input class="w3-input w3-border" type="file" placeholder="" name="tambahFoto">
+            <label><b>Waktu Mulai</b></label>
+            <input type="date" id="tanggalTransaksi" name="tambahWaktuMulai" min="<?php echo date("Y-m-d") ?>" style="width: 52.75vh; height: 2.5vw; border: 1px solid #ccc;">
+            <label><b>Waktu Selesai</b></label>
+            <input type="date" id="tanggalTransaksi" name="tambahWaktuSelesai" min="<?php echo date("Y-m-d") ?>" style="width: 52.75vh; height: 2.5vw; border: 1px solid #ccc;">
             <label><b>Keterangan Promo</b></label>
             <input class="w3-input w3-border" type="text" placeholder="" name="tambahKeterangan">
-            <label><b>Waktu Mulai</b></label>
-            <input type="date" id="tanggalTransaksi" name="tambahWaktuMulai" min="<?php echo date("Y-m-d") ?>" style="width: 49.5vh; height: 2.5vw; border: 1px solid #ccc;">
-            <label style="margin-left:3%"><b>Waktu Selesai</b></label>
-            <input type="date" id="tanggalTransaksi" name="tambahWaktuSelesai" min="<?php echo date("Y-m-d") ?>" style="width: 49.5vh; height: 2.5vw; border: 1px solid #ccc;margin-left:3%">
+            <label><b>Foto Promo</b></label>
+            <input class="w3-input w3-border" type="file" placeholder="" name="tambahFoto">
             <br>
             <br>
             <br>
@@ -268,10 +268,10 @@
           <th>ID Promo</th>
           <th>Kode Promo</th>
           <th>Nama Promo</th>
+          <th>Foto Promo</th>
+          <th>Keterangan Promo</th>
           <th>Waktu Mulai</th>
           <th>Waktu Selesai</th>
-          <th>Keterangan Promo</th>
-          <th>Foto Promo</th>
 
         </tr>
       </thead>
@@ -298,7 +298,7 @@
             <td><?php echo $row["waktuMulai"] ?></td>
             <td><?php echo $row["waktuSelesai"] ?></td>
             <td><input type="hidden" name="idPromo" value="<?php echo $row["idPromo"]; ?>"></td>
-            <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalUbah-<?= $row["idPromo"] ?>' name='buttonEdit'>Edit</button></td>
+            <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalUbah-<?= $row["idPromo"] ?>' name='buttonEdit' style="background-color:steelblue">Edit</button></td>
           </tr>
           <!-- The Modal -->
           <div class="modal fade" id="modalUbah-<?= $row["idPromo"] ?>">
@@ -322,9 +322,9 @@
                   <label><b>Keterangan Promo</b></label>
                   <input class="w3-input w3-border" type="text" placeholder="" name="editKeterangan" value="<?php echo $row['keteranganPromo']?>" required>
                   <label><b>Waktu Mulai</b></label>
-                  <input type="date" id="tanggalTransaksi" name="editWaktuMulai" value="<?php echo $row['waktuMulai']?>"  min="<?php echo date("Y-m-d") ?>" style="width: 49.5vh; height: 2.5vw; border: 1px solid #ccc;" required>
-                  <label style="margin-left:3%"><b>Waktu Selesai</b></label>
-                  <input type="date" id="tanggalTransaksi" name="editWaktuSelesai"  value="<?php echo $row['waktuSelesai']?>"  min="<?php echo date("Y-m-d") ?>" style="width: 49.5vh; height: 2.5vw; border: 1px solid #ccc;margin-left:3%" required>
+                  <input type="date" id="tanggalTransaksi" name="editWaktuMulai" value="<?php echo $row['waktuMulai']?>"  min="<?php echo date("Y-m-d") ?>" style="width: 56.75vh; height: 2.5vw; border: 1px solid #ccc;" required>
+                  <label><b>Waktu Selesai</b></label>
+                  <input type="date" id="tanggalTransaksi" name="editWaktuSelesai"  value="<?php echo $row['waktuSelesai']?>"  min="<?php echo date("Y-m-d") ?>" style="width: 56.75vh; height: 2.5vw; border: 1px solid #ccc;" required>
                   <label><b>Foto Promo</b></label>
                   <input class="w3-input w3-border" type="file" name="editFoto">
                   <input type="hidden" name="idPromo" value="<?php echo $row["idPromo"]; ?>">

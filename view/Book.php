@@ -55,41 +55,6 @@
           font-style: bold;
         }
         
-        .loginbutton {
-          width: 5%;
-          background-color: white;
-          border: none;
-          color: white;
-          padding: 14px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          margin: 8px 0;
-          margin-left: 27.5%;
-          margin-top: 7.5%;
-          cursor: pointer;
-          border-radius: 4px;
-          transition: 0.5s;
-        }
-
-        .signupbutton {
-          width: 5%;
-          background-color: #183059;
-          border: none;
-          color: black;
-          padding: 14px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          margin: 8px 0;
-          margin-left: 0%;
-          margin-top: 7.5%;
-          cursor: pointer;
-          border-radius: 4px;
-          transition: 0.5s;
-        }
 
         .enterbutton { 
           width: 20%;
