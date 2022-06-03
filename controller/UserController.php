@@ -53,6 +53,12 @@ class UserController
         redirect("../index.php");
     }
 
+    public function logout()
+    {
+        $destroy = session_destroy();
+        redirect("../index.php");
+    }
+
 }
 
 $init = new UserController();
