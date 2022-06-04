@@ -35,4 +35,29 @@ class UserModel
         else
             return false;
     }
+
+    public function editProfile($idUser, $namaUser, $jenisKelamin, $tanggalLahir, $noTelepon, $email, $password){
+        $this->db->query('UPDATE user SET namaUser = :namaUser, jenisKelamin = :jenisKelamin, tanggalLahir = :tanggalLahir, noTelepon = :noTelepon, email = :email, password = :password WHERE idUser = :idUser');
+        $this->db->bind(':namaUser', $namaUser);
+        $this->db->bind(':jenisKelamin', $jenisKelamin);
+        $this->db->bind(':tanggalLahir', $tanggalLahir);
+        $this->db->bind(':noTelepon', $noTelepon);
+        $this->db->bind(':email', $email);
+        $this->db->bind(':password', $password);
+        $this->db->bind(':idUser', $idUser);
+
+        if($this->db->returnExecute()) return true;
+        else return false;
+    }
+
+    public function requestMembership($idUser, $tipeMembership, $statusMembership)
+    {
+        $this->db->query('UPDATE user SET tipeMembership = :tipeMembership, statusMembership = :statusMembership WHERE idUser = :idUser');
+        $this->db->bind(':tipeMembership', $tipeMembership);
+        $this->db->bind(':statusMembership', $statusMembership);
+        $this->db->bind(':idUser', $idUser);
+
+        if($this->db->returnExecute()) return true;
+        else return false;
+    }
 }

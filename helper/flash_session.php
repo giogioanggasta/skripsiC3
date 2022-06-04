@@ -1,10 +1,13 @@
 <?php
 
-if(!isset($_SESSION))
+// if(!isset($_SESSION))
     session_start();
 
 function flash($name = '', $message = '', $class = 'form-message form-message-red')
 {
+    if ($class = 'green')
+        $class = 'form-message form-message-green';
+
     if (!empty($name))
         if (!empty($message) && empty($_SESSION[$name])) {
             $_SESSION[$name] = $message;
