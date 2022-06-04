@@ -8,7 +8,7 @@ include_once '../helper/flash_session.php';
 
 <head>
   <title>Login</title>
-  <?php include_once './_partials/HeaderDependency.php' ?>
+  <?php include_once './_partials/Header.php' ?>
 
   <style>
     @font-face {

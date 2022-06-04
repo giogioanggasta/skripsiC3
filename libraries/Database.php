@@ -58,6 +58,11 @@ class Database
         $this->statement->execute();
     }
 
+    public function returnExecute()
+    {
+        return $this->statement->execute();
+    }
+
     public function resultSet()
     {
         $this->execute();
