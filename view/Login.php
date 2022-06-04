@@ -132,7 +132,7 @@ include_once '../helper/flash_session.php';
       </fieldset>
     </div>
   </form>
-  <a class="w3-display-middle" href="Forgot.php" style="color:black;float: center; margin-top: 15%; text-decoration: none;">Forgot Password?</a>
+
 
 </body>
 

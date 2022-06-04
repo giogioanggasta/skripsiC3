@@ -7,8 +7,6 @@ $tanggal_lahir = "";
 $nomor_telepon = "";
 $email = "";
 $password = "";
-$errors = array();
-
 
 $db = mysqli_connect('localhost' , 'root', '', 'c3') or die("can't connect to database");
 
@@ -21,24 +19,18 @@ $nomor_telepon = mysqli_real_escape_string($db , $_POST['nomorTelepon']);
 $email = mysqli_real_escape_string($db , $_POST['e-mail']);
 $password = mysqli_real_escape_string($db , $_POST['password']);
 
-//Check database jika ada user dengan email yang sama
-$user_check_query = "SELECT * FROM user WHERE email = '$email' LIMIT 1";
-$results = mysqli_query($db, $user_check_query);
-$user = mysqli_fetch_assoc($results);
+$queryEditJasa = "UPDATE jasa SET kodeJasa = '$kodeJasa', namaJasa = '$namaJasa' , fotoJasa = '$fileNameNew' , keteranganJasa = '$keteranganJasa' , hargaJasa = '$hargaJasa' 
+WHERE idJasa = '$idJasa'";
 
-if($user){
-    if($user['email'] === $email){
-        array_push($errors, "Email sudah terdaftar");
-    }
-}
-if(count($errors) == 0){
 
-$querySignup = "INSERT INTO user (namaUser,jenisKelamin,tanggalLahir,noTelepon,email,password,tipeMembership,statusMembership) VALUES ('$nama' , '$jenis_kelamin', '$final_tanggal' , '$nomor_telepon' , '$email' , '$password' , 'Regular' , '')";
-mysqli_query($db, $querySignup);
-header('location: ../view/Login.php');
+$queryEditProfile = "UPDATE user SET namaUser = '$nama' , jenisKelamin = '$jenis_kelamin' , tanggalLahir = '$final_tanggal' , noTelepon = '$nomor_telepon' , email = '$email'
+, password = '$password' WHERE email = '$email'";
+
+mysqli_query($db, $queryEditProfile);
+header('location: ../view/Profile.php');
 }
 
-}
+
 
 
 

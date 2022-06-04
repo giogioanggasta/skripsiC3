@@ -18,7 +18,4 @@ if(isset($_POST['btnBatal'])){
     header('location: ../view/DataTransaksi.php');
     }
     
-
-
-
 ?>

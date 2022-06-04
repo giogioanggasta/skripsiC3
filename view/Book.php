@@ -120,16 +120,8 @@
 
 <div class="w3-bar w3-white w3-border" id="menu">
     <a href="Home-logged.php" class="w3-bar-item"><img src="../images/logoc3.png" style="width:150px"></a>
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="float: right; margin-top:2.25%; text-decoration: none; border: none; background-color: white;"><img src="../images/user.png" style="width:30px; margin-left:-5%">
-        <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a href="MyBooking.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Pemesanan</a></li>
-        <li><a href="EditProfile.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Edit Profile</a></li>
-        <li><a href="#" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Logout</a></li>
-      </ul>
-    </div>
-    <a href="Login.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;"></a>
+    <a href="Home.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;"><img src="../images/logout.png" style="width:25px"></a>
+    <a href="Profile.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;"><img src="../images/user.png" style="width:30px"></a>
     <a href="Membership.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Membership</a>
     <a href="News.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Berita</a>
     <a href="Product.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Produk</a>
@@ -139,30 +131,6 @@
   </div>
 
 <?php
-    $querySelectSnowWash = "SELECT * FROM jasa WHERE namaJasa = 'SNOW WASH'";
-    $resultsSnowWash = mysqli_query($db, $querySelectSnowWash) or die( mysqli_error($db));
-    $rowSnowWash = mysqli_fetch_array($resultsSnowWash);
-
-    $querySelectGoldWash = "SELECT * FROM jasa WHERE namaJasa = 'GOLD WASH'";
-    $resultsGoldWash = mysqli_query($db, $querySelectGoldWash) or die( mysqli_error($db));
-    $rowGoldWash = mysqli_fetch_array($resultsGoldWash);
-
-    $querySelectGantiOli = "SELECT * FROM jasa WHERE namaJasa = 'GANTI OLI'";
-    $resultsGantiOli = mysqli_query($db, $querySelectGantiOli) or die( mysqli_error($db));
-    $rowGantiOli = mysqli_fetch_array($resultsGantiOli);
-
-    $querySelectTuneUp = "SELECT * FROM jasa WHERE namaJasa = 'TUNE UP'";
-    $resultsTuneUp = mysqli_query($db, $querySelectTuneUp) or die( mysqli_error($db));
-    $rowTuneUp = mysqli_fetch_array($resultsTuneUp);
-
-    $querySelectPlatinumWash = "SELECT * FROM jasa WHERE namaJasa = 'PLATINUM WASH L/XL'";
-    $resultsPlatinumWash = mysqli_query($db, $querySelectPlatinumWash) or die( mysqli_error($db));
-    $rowPlatinumWash = mysqli_fetch_array($resultsPlatinumWash);
-
-    $querySelectBodyGrooming = "SELECT * FROM jasa WHERE namaJasa = 'BODY GROOMING XL'";
-    $resultsBodyGrooming = mysqli_query($db, $querySelectBodyGrooming) or die( mysqli_error($db));
-    $rowBodyGrooming = mysqli_fetch_array($resultsBodyGrooming);
-
     $querySelect = "SELECT namaJasa, hargaJasa FROM jasa";
     $results = mysqli_query($db, $querySelect) or die( mysqli_error($db));
     $table = $results -> fetch_all(MYSQLI_ASSOC);
