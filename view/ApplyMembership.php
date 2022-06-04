@@ -1,9 +1,5 @@
-<?php
-session_start();
+<?php include('../model/Model-Membership.php') ?>
 
-$db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to database");
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
@@ -57,7 +53,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
     h2 {
       font-family: navBarFont;
       font-size: 30px;
-      color: black;
+      color: white;
       margin-top: 40px;
       margin-bottom: 40px;
     }
@@ -65,7 +61,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
     h5 {
       font-family: navBarFont;
       font-size: 20px;
-      color: black;
+      color: white;
     }
 
     .button {
@@ -88,26 +84,66 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
       left: 0;
       bottom: 0;
       width: 100%;
+      background-color: #183059;
+      color: white;
+      text-align: center;
+    }
+
+    table {
+      width: 50%;
+      color: black;
+      margin-left: 25%;
+      margin-top: 12.5%;
+    }
+
+    table,
+    tr,
+    td {
+      padding: 10px;
+    }
+
+    .button {
+      width: 82.5%;
+      background-color: white;
+      border: 1px solid #ccc;
+      color: white;
+      padding: 14px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 8px 0;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: 0.5s;
+    }
+
+    .enterbutton {
+      width: 20%;
+      background-color: grey;
+      border: none;
+      color: white;
+      padding: 14px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 8px 0;
+      margin-left: 55%;
+      margin-top: 2.5%;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: 0.5s;
+    }
+
+    .footer {
+      left: 0;
+      bottom: 0;
+      width: 100%;
       background-color: #123;
       color: white;
       text-align: center;
       margin-top: 10%;
-    }
-
-    .container {
-      margin-top: 10%;
-    }
-
-    .enterbtn a{
-      background-color: steelblue;
-      color: white;
-      padding: 14px 25px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-family: texts;
-      margin-top: 5%;
-      margin-left:16.5%;
     }
   </style>
 </head>
@@ -115,7 +151,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
 <body>
 
 
-  <div class="w3-bar w3-white w3-border" id="menu">
+<div class="w3-bar w3-white w3-border" id="menu">
     <a href="Home-logged.php" class="w3-bar-item"><img src="../images/logoc3.png" style="width:150px"></a>
     <a href="Home.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;"><img src="../images/logout.png" style="width:25px"></a>
     <a href="Profile.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;"><img src="../images/user.png" style="width:30px"></a>
@@ -128,35 +164,30 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
   </div>
 
   <a class="w3-display-middle" style="color:black;float: center; margin-top: -10%; text-decoration: none;">Membership</a>
-  <?php
-  $sql = "SELECT * FROM membership";
-  $results = mysqli_query($db, $sql) or die(mysqli_error($db));
 
-  while ($row = mysqli_fetch_array($results)) {
-
-  ?>
-
-    <div class="container">
-      <div class="col">
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><?php echo $row["namaMembership"] ?> </h5>
-              <p class="card-text"><?php echo $row["keteranganMembership"] ?> </p>
-              <p class="card-text">Rp. <?php echo $row["tarifMembership"] ?> per tahun</p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <form action="Membership.php" method="post">
+    <div class="signup">
+      <table style="width:50%; color: black;">
+        <tr>
+          <td>Alamat E-mail</td>
+          <td><input type="text" name="email" placeholder="" required style="width: 25vh; height: 2.5vw; border: 1px solid #ccc;"></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="text" name="password" placeholder="" required style="width: 25vh; height: 2.5vw; border: 1px solid #ccc;"></td>
+          </td>
+          <td>Tipe Membership</td>
+          <td><select id="tipeMember" name="tipeMember" required style="width: 25vh; height: 2.5vw; border: 1px solid #ccc;">
+              <option value="Magic Sealant">Magic Sealant</option>
+              <option value="Magic Carnauba">Magic Carnauba</option>
+              <option value="Magic Banana">Magic Banana</option>
+            </select>
+        </tr>
+      </table>
     </div>
 
-  <?php
-
-  }
-  ?>
-  <div class="enterbtn">
-    <a href="ApplyMembership.php">Apply Membership</a>
-  </div>
+    <button type="submit" class="enterbutton" name="enterBtn">Enter</button>
+  </form>
 
   <div class="footer">
     <img src="../images/logoc3.png" alt="promo1" class="d-block" style="width:10%; margin-left: 45%; padding-top: 1.5%">

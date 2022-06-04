@@ -14,7 +14,7 @@ if(isset($_POST['enterBtn'])){
     $res = mysqli_query($db, $queryLogin);
     $row = mysqli_fetch_array($res);
     if($row['password'] != $password){
-        array_push($errors, "Password salah");
+        array_push($errors, "Email atau Password salah");
     }
     else {
         header('location: ../view/Home-Logged.php');

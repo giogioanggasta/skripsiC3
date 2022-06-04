@@ -202,7 +202,9 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
       margin-top: 10%;
     }
 
-
+    .container {
+      margin-top: 10%;
+    }
   </style>
 </head>
 
@@ -211,16 +213,8 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
 
   <div class="w3-bar w3-white w3-border" id="menu">
     <a href="Home-logged.php" class="w3-bar-item"><img src="../images/logoc3.png" style="width:150px"></a>
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="float: right; margin-top:2.25%; text-decoration: none; border: none; background-color: white;"><img src="../images/user.png" style="width:30px; margin-left:-5%">
-        <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a href="MyBooking.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Pemesanan</a></li>
-        <li><a href="EditProfile.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Edit Profile</a></li>
-        <li><a href="#" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Logout</a></li>
-      </ul>
-    </div>
-    <a href="Login.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;"></a>
+    <a href="Home.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;"><img src="../images/logout.png" style="width:25px"></a>
+    <a href="Profile.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;"><img src="../images/user.png" style="width:30px"></a>
     <a href="Membership.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Membership</a>
     <a href="News.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Berita</a>
     <a href="Product.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Produk</a>
@@ -238,23 +232,34 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
   while ($row = mysqli_fetch_array($results)) {
 
   ?>
-    <div class="col-md-4" style="margin-top:10%">
-      <div style="border:1px solid #333; background-color: white;">
-
-        <img src="../model/uploadImage/<?php echo $row['fotoJasa'] ?>" style="width:30%"><br>
-
-        <h3 style="margin-left:5%;"><?php echo $row["namaJasa"] ?> </h3> <br>
-
-
-        <?php echo $row["keteranganJasa"] ?><br>
-
-
+    <div class="container">
+      <div class="col">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <img src="../model/uploadImage/<?php echo $row['fotoJasa'] ?>" style="width:100%"><br>
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row["namaJasa"] ?> </h5>
+              <p class="card-text"><?php echo $row["keteranganJasa"] ?> </p>
+              <p class="card-text">Rp. <?php echo $row["hargaJasa"] ?></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <?php
 
   }
   ?>
+
+  <div class="footer">
+    <img src="../images/logoc3.png" alt="promo1" class="d-block" style="width:10%; margin-left: 45%; padding-top: 1.5%">
+    <p style="font-size:100%">C3 adalah penyedia jasa cuci maupun servis mobil terkemuka dari Indonesia. Pesan jasa, cek produk, baca </p>
+    <p style="font-size:100%">berita otomotif terbaru dengan nyaman, cepat dan aman tanpa repot.</p>
+    <br>
+    <a href="Contact.php" class="w3-bar-item" style="float: center; text-decoration: none; font-family:texts ; font-size: 100%">- HUBUNGI KAMI - </a>
+    <a href="About.php" class="w3-bar-item" style="float: center; text-decoration: none; font-family:texts ; font-size: 100%"> ABOUT US - </a>
+  </div>
+
 
 
 </body>
