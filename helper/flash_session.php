@@ -5,8 +5,8 @@
 
 function flash($name = '', $message = '', $class = 'form-message form-message-red')
 {
-    if ($class = 'green')
-        $class = 'form-message form-message-green';
+    if ($class = 'red')
+        $class = 'form-message form-message-red';
 
     if (!empty($name))
         if (!empty($message) && empty($_SESSION[$name])) {

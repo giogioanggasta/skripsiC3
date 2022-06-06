@@ -122,9 +122,9 @@ include_once '../helper/flash_session.php';
           <br>
           <?php flash('error_message') ?>
           <input type="hidden" name="type" value="login">
-          <input type="email" name="email" placeholder="E-mail" style="width: 70vh; height: 2.5vw; border: 1px solid #ccc; padding: 12px;">
+          <input type="email" name="email" placeholder="E-mail" style="width: 70vh; height: 2.5vw; border: 1px solid #ccc; padding: 12px; color: black">
           <br><br>
-          <input type="password" name="password" placeholder="Password" style="width: 70vh; height: 2.5vw; border: 1px solid #ccc; padding: 6px">
+          <input type="password" name="password" placeholder="Password" style="width: 70vh; height: 2.5vw; border: 1px solid #ccc; padding: 6px; color: black">
           <br>
           <br>
           <button type="submit" class="enterbutton" name="enterBtn">Login</button>
