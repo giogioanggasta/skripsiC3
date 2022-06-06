@@ -168,7 +168,7 @@ $data = $s -> fetch_all(MYSQLI_ASSOC);
                 <tr>
                 <td>Waktu Pemesanan</td>
                     <td>
-                        <input type="time" id="waktuTransaksi" name="waktuTransaksi" step="3600" min="08:00" max="17:00" style="width: 25vh; height: 2.5vw; border: 1px solid #ccc;">
+                        <input type="time" id="waktuTransaksi" name="waktuTransaksi" step="3600" min="08:00" max="16:00" style="width: 25vh; height: 2.5vw; border: 1px solid #ccc;">
                     </td>
                     <td>Pilihan Jasa 2 (Opsional)</td>
                     <td><select class='jasa' id="jasa2" name="jasa2" onchange="handler('jasa2',2)" style="width: 25vh; height: 2.5vw; border: 1px solid #ccc;">
