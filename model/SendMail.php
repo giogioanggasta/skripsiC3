@@ -37,6 +37,7 @@ if(isset($_POST['buttonTerima'])){
 
 if(isset($_POST['btnBatal'])){
     $emailTujuan = $_POST['emailTujuan'];
+    $alasan = $_POST['alasanPembatalan'];
     
     try{
         $mail->isSMTP();

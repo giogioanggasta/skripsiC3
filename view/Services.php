@@ -114,11 +114,6 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
       }
     }
 
-    h5 {
-      text-align: center;
-
-    }
-
     #alamat {
       float: right;
     }
@@ -177,7 +172,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
     h5 {
       font-family: navBarFont;
       font-size: 20px;
-      color: white;
+      color: black;
     }
 
     .footer {
@@ -214,7 +209,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
       <div class="col">
         <div class="col-12 col-md-6 col-lg-4">
           <div class="card">
-            <img src="../model/uploadImage/<?php echo $row['fotoJasa'] ?>" style="width:100%"><br>
+          <img src="../model/uploadImage/<?php echo $row['fotoJasa'] ?>" style="width:70%"><br>
             <div class="card-body">
               <h5 class="card-title"><?php echo $row["namaJasa"] ?> </h5>
               <p class="card-text"><?php echo $row["keteranganJasa"] ?> </p>

@@ -113,11 +113,6 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
       }
     }
 
-    h5 {
-      text-align: center;
-
-    }
-
     #alamat {
       float: right;
     }
@@ -176,7 +171,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
     h5 {
       font-family: navBarFont;
       font-size: 20px;
-      color: white;
+      color: black;
     }
 
     .footer {
@@ -187,6 +182,12 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
       color: white;
       text-align: center;
       margin-top: 10%;
+    }
+
+    .container {
+      margin-top: 10%;
+      margin-left: 10%;
+      float: left;
     }
   </style>
 </head>
@@ -205,17 +206,17 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
   while ($row = mysqli_fetch_array($results)) {
 
   ?>
-    <div class="col-md-4" style="margin-top:10%">
-      <div style="border:1px solid #333; background-color: white;">
-
-        <img src="../model/uploadImage/<?php echo $row['fotoBerita'] ?>" style="width:30%"><br>
-
-        <h3 style="margin-left:5%;"><?php echo $row["namaBerita"] ?> </h3> <br>
-
-
-        <?php echo $row["keteranganBerita"] ?><br>
-
-
+    <div class="container">
+      <div class="col">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+          <img src="../model/uploadImage/<?php echo $row['fotoBerita'] ?>" style="width:70%"><br>
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row["namaBerita"] ?> </h5>
+              <p class="card-text"><?php echo $row["keteranganBerita"] ?> </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <?php

@@ -52,7 +52,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
     h5 {
       font-family: navBarFont;
       font-size: 20px;
-      color: white;
+      color: black;
     }
 
     .button {

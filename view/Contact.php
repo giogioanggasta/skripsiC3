@@ -1,3 +1,5 @@
+<?php include('../model/SendMailContact.php') ?>
+
 <!DOCTYPE html>
 
 <head>
@@ -74,19 +76,17 @@
 <div class="mapouter"><div class="gmap_canvas"><iframe width="2000" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=car%20care%20center%20medan&t=&z=13&ie=UTF8&iwloc=&output=embed" 
   frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies-online.net"></a><br><style>.mapouter{position:relative;text-align:right;height:300px;width:2000px;}</style>
   <style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:2000px;}</style></div></div>
-  <form>
+  <<form action="Contact.php" method="post">>
     <div class="login" style="padding-bottom: 75px">
       <fieldset style="width:120%">
       <h1>Pesan Anda</h1>
         <div class="isi">
-          <br>
-          <input type="text" name="nama" placeholder="Nama" required style="width: 70vh; height: 2.5vw; border: 1px solid #ccc; padding: 12px; color:black; font-size:150%">
           <br><br>
           <input type="text" name="emailSender" placeholder="E-mail" required style="width: 70vh; height: 2.5vw; border: 1px solid #ccc; padding: 6px; color:black; font-size:150%">
           <br><br>
           <input type="text" name="subjectMail" placeholder="Subject" required style="width: 70vh; height: 2.5vw; border: 1px solid #ccc; padding: 6px; color:black; font-size:150%">
           <br><br>
-          <textarea name="pesan" cols="30" rows="10" required placeholder="Pesan Anda" style="width: 70vh; height: 10.5vw; border: 1px solid #ccc; padding: 6px; color:black; font-size:150%"></textarea>
+          <textarea name="message" cols="30" rows="10" required placeholder="Pesan Anda" style="width: 70vh; height: 10.5vw; border: 1px solid #ccc; padding: 6px; color:black; font-size:150%"></textarea>
           <br><br>
           <input type="submit" value="SEND" name="submitMasukan" style="width:620px; height: 40px; color: black; font-size:150%">
         </div>
