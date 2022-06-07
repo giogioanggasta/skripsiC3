@@ -14,6 +14,7 @@ $hargaJasa3 = "";
 $catatanPelanggan = "";
 $harga = "";
 $msg = "";
+
 $db = mysqli_connect('localhost' , 'root', '', 'c3') or die("can't connect to database");
 
 if(isset($_POST['enterBtn'])){
@@ -27,7 +28,7 @@ if(isset($_POST['enterBtn'])){
     $jasa2 = mysqli_real_escape_string($db , $_POST['jasa2']);
     $jasa3 =  mysqli_real_escape_string($db , $_POST['jasa3']);
     $catatanPelanggan = mysqli_real_escape_string($db , $_POST['catatanPelanggan']);
-    $harga = $_POST['totalHarga'];
+    $harga = $_POST['hargaFinal'];
     $queryBook = "INSERT INTO transaksi (tanggalTransaksi,waktuTransaksi,jenisMobil,platKendaraan,jasa1,jasa2,jasa3,catatanPelanggan,totalHarga,status,alasanPembatalan) VALUES ('$tanggalTransaksi' , '$waktuTransaksi' , '$jenisMobil', '$platKendaraan' , '$jasa1' , '$jasa2' , '$jasa3' , '$catatanPelanggan' , '$harga', 'Menunggu Konfirmasi' , '')";
     mysqli_query($db, $queryBook);
 
@@ -96,11 +97,3 @@ if (isset($_POST['btnBatal'])) {
     mysqli_query($db , $sql);
     header("Location: MyBooking.php?pemesananDibatalkan");
 }
-
-
-
-
-
-
-
-?>
