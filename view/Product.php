@@ -1,15 +1,12 @@
 <?php
-session_start();
-
-$db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to database");
-
+  session_start();
+  $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to database");
 ?>
+
 <!DOCTYPE html>
-
-
 <head>
-<title>Produk</title>
-<?php include_once './_partials/Header.php'; ?>
+  <title>Produk</title>
+  <?php include_once './_partials/Header.php'; ?>
   <style>
     @font-face {
       font-family: header;
@@ -88,23 +85,19 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
 </head>
 
 <body>
-
-
-<?php include_once './_partials/Navbar.php'; ?>
-
+  <?php include_once './_partials/Navbar.php'; ?>
   <a class="w3-display-middle" style="color:black;float: center; margin-top: -10%; text-decoration: none;">Produk</a>
   <?php
-  $sql = "SELECT * FROM barang";
-  $results = mysqli_query($db, $sql) or die(mysqli_error($db));
-
-  while ($row = mysqli_fetch_array($results)) {
-
+    $sql = "SELECT * FROM barang where kategori = 'non jasa'";
+    $results = mysqli_query($db, $sql) or die(mysqli_error($db));
   ?>
-    <div class="container">
+
+  <div class="container">
+   <? while ($row = mysqli_fetch_array($results)) {?>
       <div class="col">
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-4 col-md-6 col-lg-4">
           <div class="card">
-          <img src="../model/uploadImage/<?php echo $row['fotoBarang'] ?>" style="width:70%"><br>
+            <img src="../model/uploadImage/<?php echo $row['fotoBarang'] ?>" style="width:70%"><br>
             <div class="card-body">
               <h5 class="card-title"><?php echo $row["namaBarang"] ?> </h5>
               <p class="card-text"><?php echo $row["keteranganBarang"] ?> </p>
@@ -113,13 +106,10 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
           </div>
         </div>
       </div>
+      <?php } ?>
     </div>
-  <?php
 
-  }
-  ?>
-
-<div class="footer">
+  <div class="footer">
     <img src="../images/logoc3.png" alt="promo1" class="d-block" style="width:10%; margin-left: 45%; padding-top: 1.5%">
     <p style="font-size:100%">C3 adalah penyedia jasa cuci maupun servis mobil terkemuka dari Indonesia. Pesan jasa, cek produk, baca </p>
     <p style="font-size:100%">berita otomotif terbaru dengan nyaman, cepat dan aman tanpa repot.</p>
