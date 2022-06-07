@@ -14,6 +14,7 @@ $hargaJasa3 = "";
 $catatanPelanggan = "";
 $harga = "";
 $msg = "";
+$idUser = $_SESSION['idUser'];
 
 $db = mysqli_connect('localhost' , 'root', '', 'c3') or die("can't connect to database");
 
@@ -29,14 +30,9 @@ if(isset($_POST['enterBtn'])){
     $jasa3 =  mysqli_real_escape_string($db , $_POST['jasa3']);
     $catatanPelanggan = mysqli_real_escape_string($db , $_POST['catatanPelanggan']);
     $harga = $_POST['hargaFinal'];
-    $queryBook = "INSERT INTO transaksi (tanggalTransaksi,waktuTransaksi,jenisMobil,platKendaraan,jasa1,jasa2,jasa3,catatanPelanggan,totalHarga,status,alasanPembatalan) VALUES ('$tanggalTransaksi' , '$waktuTransaksi' , '$jenisMobil', '$platKendaraan' , '$jasa1' , '$jasa2' , '$jasa3' , '$catatanPelanggan' , '$harga', 'Menunggu Konfirmasi' , '')";
-    mysqli_query($db, $queryBook);
+    $queryBook = "INSERT INTO transaksi (idUser,tanggalTransaksi,waktuTransaksi,jenisMobil,platKendaraan,jasa1,jasa2,jasa3,catatanPelanggan,totalHarga,status,alasanPembatalan) VALUES ('$idUser', '$tanggalTransaksi', '$waktuTransaksi', '$jenisMobil', '$platKendaraan','$jasa1','$jasa2','$jasa3','$catatanPelanggan','$harga','Menunggu Konfirmasi','')";
 
-    print_r($jasa1);
-    print_r($jasa2);
-    print_r($jasa3);
-    print_r($queryBook);
-    print_r($jenisMobil);
+    mysqli_query($db, $queryBook);
 
     echo '<script type="text/javascript">' .
         'console.log(' .$jasa1. ');</script>';
@@ -68,7 +64,7 @@ if(isset($_POST['btnUpload'])){
                 $fileNameNew = uniqid(',' , true).".".$fileActualExt;
                 $fileDestination = __DIR__."/uploadImage/".$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
-                
+
 
                 //Insert into db
                 $sql = "UPDATE transaksi SET buktiPembayaran = '$fileNameNew' , status = 'Menunggu Konfirmasi'

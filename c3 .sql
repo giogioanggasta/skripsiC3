@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 04, 2022 at 08:07 PM
+-- Generation Time: Jun 07, 2022 at 04:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -142,6 +142,7 @@ CREATE TABLE `membership` (
   `idMembership` int(15) NOT NULL,
   `kodeMembership` varchar(30) NOT NULL,
   `namaMembership` varchar(30) NOT NULL,
+  `diskon` decimal(15,2) NOT NULL COMMENT 'satuan persen',
   `tarifMembership` double NOT NULL,
   `keteranganMembership` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -150,10 +151,10 @@ CREATE TABLE `membership` (
 -- Dumping data for table `membership`
 --
 
-INSERT INTO `membership` (`idMembership`, `kodeMembership`, `namaMembership`, `tarifMembership`, `keteranganMembership`) VALUES
-(1, 'M-01', 'MAGIC SEALANT', 2000000, '6 STEPS PAINT PROTECTION DAN DISKON 5% TIAP JASA'),
-(2, 'M-02', 'MAGIC CARNAUBA', 1750000, '5 STEPS DEEP LOOK PAINT DAN DISKON 10% TIAP JASA'),
-(3, 'M-03', 'MAGIC BANANA', 1500000, '5 STEPS WET LOOK PAINT DAN DISKON 15% TIAP JASA');
+INSERT INTO `membership` (`idMembership`, `kodeMembership`, `namaMembership`, `diskon`, `tarifMembership`, `keteranganMembership`) VALUES
+(1, 'M-01', 'MAGIC SEALANT', '5.00', 2000000, '6 STEPS PAINT PROTECTION DAN DISKON 5% TIAP JASA'),
+(2, 'M-02', 'MAGIC CARNAUBA', '10.00', 1750000, '5 STEPS DEEP LOOK PAINT DAN DISKON 10% TIAP JASA'),
+(3, 'M-03', 'MAGIC BANANA', '15.00', 1500000, '5 STEPS WET LOOK PAINT DAN DISKON 15% TIAP JASA');
 
 -- --------------------------------------------------------
 
@@ -220,6 +221,7 @@ INSERT INTO `supplier` (`idSupplier`, `kodeSupplier`, `namaSupplier`, `noTelepon
 
 CREATE TABLE `transaksi` (
   `idTransaksi` int(15) NOT NULL,
+  `idUser` int(15) NOT NULL,
   `tanggalTransaksi` date NOT NULL,
   `waktuTransaksi` time NOT NULL,
   `jenisMobil` varchar(30) NOT NULL,
@@ -238,15 +240,22 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`idTransaksi`, `tanggalTransaksi`, `waktuTransaksi`, `jenisMobil`, `platKendaraan`, `jasa1`, `jasa2`, `jasa3`, `catatanPelanggan`, `totalHarga`, `status`, `buktiPembayaran`, `alasanPembatalan`) VALUES
-(1, '2022-05-19', '12:00:00', 'CR-V', 'D 412 TA', 'SNOW WASH', 'GANTI OLI', '', 'Tidak ada', 215000, 'Pemesanan Diterima', ',6280aad4de4f77.76455161.jpg', 'qwqww'),
-(2, '2022-05-16', '10:00:00', 'AVANZA', 'BK 102 EO', 'SNOW WASH', '', '', '-', 65000, 'Pemesanan Ditolak', ',6280ab1970e634.99907832.jpg', 'Jadwal full'),
-(3, '2022-05-18', '14:00:00', 'INNOVA', 'B 126 WW', 'GANTI OLI', '', '', 'Tidak ada', 150000, 'Pemesanan Diterima', ',628778c06bdf28.94056070.png', ''),
-(4, '2022-05-20', '12:00:00', '123', 'D 412 TA', 'GANTI OLI', '', '', '', 150000, 'Pemesanan Diterima', ',62877d47640542.54180568.png', ''),
-(5, '2022-05-17', '14:00:00', 'INNOVA', 'B 995 AS', 'SNOW WASH', '', '', 'Tidak ada', 65000, 'Pemesanan Diterima', NULL, ''),
-(6, '2022-05-19', '12:00:00', 'CR-V', 'D 412 TA', 'BODY GROOMING', '', '', 'Tidak ada', 400000, 'Pemesanan Ditolak', NULL, 'Jadwal full'),
-(7, '2022-05-27', '12:00:00', 'CR-V', 'D 412 TA', 'GOLD WASH', '', '', 'Tidak ada', 30000, 'Pemesanan Dibatalkan', NULL, ''),
-(8, '2022-05-17', '12:00:00', 'qweq', 'D 412 TA', 'GANTI OLI', '', '', '12', 150000, 'Pemesanan Dibatalkan', NULL, '');
+INSERT INTO `transaksi` (`idTransaksi`, `idUser`, `tanggalTransaksi`, `waktuTransaksi`, `jenisMobil`, `platKendaraan`, `jasa1`, `jasa2`, `jasa3`, `catatanPelanggan`, `totalHarga`, `status`, `buktiPembayaran`, `alasanPembatalan`) VALUES
+(1, 1, '2022-05-19', '12:00:00', 'CR-V', 'D 412 TA', 'SNOW WASH', 'GANTI OLI', '', 'Tidak ada', 215000, 'Pemesanan Diterima', ',6280aad4de4f77.76455161.jpg', 'qwqww'),
+(2, 1, '2022-05-16', '10:00:00', 'AVANZA', 'BK 102 EO', 'SNOW WASH', '', '', '-', 65000, 'Pemesanan Ditolak', ',6280ab1970e634.99907832.jpg', 'Jadwal full'),
+(3, 4, '2022-05-18', '14:00:00', 'INNOVA', 'B 126 WW', 'GANTI OLI', '', '', 'Tidak ada', 150000, 'Pemesanan Diterima', ',628778c06bdf28.94056070.png', ''),
+(4, 3, '2022-05-20', '12:00:00', '123', 'D 412 TA', 'GANTI OLI', '', '', '', 150000, 'Pemesanan Diterima', ',62877d47640542.54180568.png', ''),
+(5, 2, '2022-05-17', '14:00:00', 'INNOVA', 'B 995 AS', 'SNOW WASH', '', '', 'Tidak ada', 65000, 'Pemesanan Diterima', NULL, ''),
+(6, 16, '2022-05-19', '12:00:00', 'CR-V', 'D 412 TA', 'BODY GROOMING', '', '', 'Tidak ada', 400000, 'Pemesanan Ditolak', NULL, 'Jadwal full'),
+(7, 8, '2022-05-27', '12:00:00', 'CR-V', 'D 412 TA', 'GOLD WASH', '', '', 'Tidak ada', 30000, 'Pemesanan Dibatalkan', NULL, ''),
+(8, 2, '2022-05-17', '12:00:00', 'qweq', 'D 412 TA', 'GANTI OLI', '', '', '12', 150000, 'Pemesanan Dibatalkan', NULL, ''),
+(9, 2, '2022-06-07', '10:00:00', '1234', '1234', 'SILVER WASH', 'BODY GROOMING', 'PLATINUM WASH', '12123', 695000, 'Menunggu Konfirmasi', NULL, ''),
+(10, 3, '2022-06-07', '11:00:00', '1234', '1234', 'GOLD WASH', 'SILVER WASH', 'BODY GROOMING', '12123', 446250, 'Menunggu Konfirmasi', NULL, ''),
+(11, 3, '2022-06-22', '11:00:00', '13123', '12231', 'GOLD WASH', 'SILVER WASH', 'GANTI OLI', '3123', 318750, 'Menunggu Konfirmasi', NULL, ''),
+(12, 2, '2022-06-08', '10:00:00', '231', '231', 'SILVER WASH', 'SILVER WASH', 'GANTI OLI', '231', 440000, 'Menunggu Konfirmasi', NULL, ''),
+(13, 2, '2022-06-10', '10:00:00', '8989', '1234', 'GOLD WASH', 'GOLD WASH', 'GOLD WASH', '1212', 90000, 'Menunggu Konfirmasi', NULL, ''),
+(14, 2, '2022-06-29', '10:00:00', '2121', '1212', 'PLATINUM WASH', 'SILVER WASH', 'TUNE UP', '2121', 420750, 'Menunggu Konfirmasi', NULL, ''),
+(15, 2, '2022-06-17', '10:00:00', '9090', '1212', 'GOLD WASH', 'SILVER WASH', 'PLATINUM WASH', '0000', 276250, 'Menunggu Konfirmasi', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -273,7 +282,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`idUser`, `role`, `namaUser`, `jenisKelamin`, `tanggalLahir`, `noTelepon`, `email`, `password`, `tipeMembership`, `statusMembership`) VALUES
 (1, 'admin', 'admin', 'Pria', '2021-10-21', '087742036248', 'admin@admin', 'admin', 'Magic Carnauba', 'Accepted'),
-(2, 'customer', 'customer', 'wanita', '2021-10-05', '087742036246', 'customer@customer', 'customer', 'Magic Carnauba', 'Requested'),
+(2, 'customer', 'customer', 'wanita', '2021-10-05', '087742036246', 'customer@customer', 'customer', 'MAGIC BANANA', 'Accepted'),
 (3, 'customer', 'Giovanni2', 'wanita', '2021-10-14', '08774230128', 'giogioanggasta@yahoo.com', 'Jerapah12', '', NULL),
 (4, 'customer', 'Giovanni', 'pria', '2021-12-16', '087742036248', 'giogioanggastaaa@gmail.com', 'jerapah123', '', NULL),
 (5, 'customer', 'Giovanni 3', 'pria', '2021-12-14', '087742036248', 'giogioanggastaaaaa@gmail.com', 'jerapah123', 'Magic Carnauba', 'Refused'),
@@ -413,7 +422,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `idTransaksi` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idTransaksi` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`
