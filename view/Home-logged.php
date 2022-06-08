@@ -196,6 +196,11 @@
       transform: translate(-85%, -100%);
     }
 
+    .galeri {
+      margin-left: 20%;
+      margin-top: 10%;
+    }
+
     .teks button {
       position: absolute;
       top: 50%;
@@ -223,7 +228,7 @@
   </div>
 
 
-
+  <div class="galeri" style="color:black; font-size:350%">Galeri C3</div>
   <div id="demo" class="carousel slide" data-bs-ride="carousel" style="width:65%; margin-left:18%; margin-top:5.5%;">
 
     <div class="carousel-indicators">
@@ -235,13 +240,13 @@
 
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="../images/promo2.jpg" alt="promo1" class="d-block" style="width:100%">
+        <img src="../images/foto1.jpg" alt="foto1" class="d-block" style="width:100%">
       </div>
       <div class="carousel-item">
-        <img src="../images/promo5.webp" alt="promo2" class="d-block" style="width:100%">
+        <img src="../images/foto2.jpg" alt="foto2" class="d-block" style="width:100%">
       </div>
       <div class="carousel-item">
-        <img src="../images/promo3.jpg" alt="promo3" class="d-block" style="width:100%">
+        <img src="../images/foto3.jpg" alt="foto3" class="d-block" style="width:100%">
       </div>
     </div>
 

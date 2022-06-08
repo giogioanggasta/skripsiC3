@@ -101,7 +101,14 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
 </head>
 
 <body>
-  <?php include_once './_partials/Navbar.php'; ?>
+<div class="w3-bar w3-white w3-border " id="menu">
+  <a href="Home.php" class="w3-bar-item"><img src="../images/logoc3.png" style="width:150px"></a>
+  <a href="Login.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Login</a>
+  <a href="Membership-unlogged.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Membership</a>
+  <a href="Product-unlogged.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Produk</a>
+  <a href="Services-unlogged.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Servis</a>
+  <a href="Login.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Book</a>
+</div>
   <a class="w3-display-middle" style="color:black;float: center; margin-top: -10%; text-decoration: none;">Membership</a>
   <?php
     $sql = "SELECT * FROM membership";

@@ -1,16 +1,12 @@
 <?php
-session_start();
-
-$db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to database");
-
+  session_start();
+  $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to database");
 ?>
+
 <!DOCTYPE html>
-
-
 <head>
-  <title>Membership</title>
+  <title>Produk</title>
   <?php include_once './_partials/Header.php'; ?>
-
   <style>
     @font-face {
       font-family: header;
@@ -45,7 +41,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
     h2 {
       font-family: navBarFont;
       font-size: 30px;
-      color: black;
+      color: white;
       margin-top: 40px;
       margin-bottom: 40px;
     }
@@ -85,26 +81,21 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
     .container {
       margin-top: 15%;
     }
-
-    .enterbtn a{
-      background-color: steelblue;
-      color: white;
-      padding: 14px 25px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-family: texts;
-      margin-top: 5%;
-      margin-left:16.5%;
-    }
   </style>
 </head>
 
 <body>
-  <?php include_once './_partials/Navbar.php'; ?>
-  <a class="w3-display-middle" style="color:black;float: center; margin-top: -10%; text-decoration: none;">Membership</a>
+<div class="w3-bar w3-white w3-border " id="menu">
+  <a href="Home.php" class="w3-bar-item"><img src="../images/logoc3.png" style="width:150px"></a>
+  <a href="Login.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Login</a>
+  <a href="Membership-unlogged.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Membership</a>
+  <a href="Product-unlogged.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Produk</a>
+  <a href="Services-unlogged.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Servis</a>
+  <a href="Login.php" class="w3-bar-item" style="float: right; margin-top:2%; text-decoration: none;">Book</a>
+</div>
+  <a class="w3-display-middle" style="color:black;float: center; margin-top: -10%; text-decoration: none;">Produk</a>
   <?php
-    $sql = "SELECT * FROM membership";
+    $sql = "SELECT * FROM barang where kategori = 'non jasa'";
     $results = mysqli_query($db, $sql) or die(mysqli_error($db));
   ?>
 
@@ -113,20 +104,18 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
       <div class="col">
         <div class="col-4 col-md-6 col-lg-4">
           <div class="card">
-            <!-- <img src="../model/uploadImage/<?php echo $row['fotoMembership'] ?>" style="width:70%"><br> -->
+            <img src="../model/uploadImage/<?php echo $row['fotoBarang'] ?>" style="width:70%"><br>
             <div class="card-body">
-              <h5 class="card-title"><?php echo $row["namaMembership"] ?> </h5>
-              <p class="card-text"><?php echo $row["keteranganMembership"] ?> </p>
-              <p class="card-text">Rp. <?php echo $row["tarifMembership"] ?> per tahun</p>
+              <h5 class="card-title"><?php echo $row["namaBarang"] ?> </h5>
+              <p class="card-text"><?php echo $row["keteranganBarang"] ?> </p>
+              <p class="card-text">Rp. <?php echo $row["hargaBarang"] ?></p>
             </div>
           </div>
         </div>
       </div>
+
       <?php } ?>
     </div>
-  <div class="enterbtn">
-    <a href="ApplyMembership.php">Apply Membership</a>
-  </div>
 
   <div class="footer">
     <img src="../images/logoc3.png" alt="promo1" class="d-block" style="width:10%; margin-left: 45%; padding-top: 1.5%">
@@ -136,6 +125,8 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
     <a href="Contact.php" class="w3-bar-item" style="float: center; text-decoration: none; font-family:texts ; font-size: 100%">- HUBUNGI KAMI - </a>
     <a href="About.php" class="w3-bar-item" style="float: center; text-decoration: none; font-family:texts ; font-size: 100%"> ABOUT US - </a>
   </div>
+
+
 
 </body>
 
