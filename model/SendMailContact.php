@@ -18,13 +18,13 @@ if(isset($_POST['submitMasukan'])){
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'giogioanggasta@gmail.com';
-        $mail->Password = 'Jerapah!2';
+        $mail->Username = 'unparpasaga@gmail.com';
+        $mail->Password = 'raisA66900';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = '587';
 
         $mail->setFrom('giogioanggasta@gmail.com');
-        $mail->addAddress('giogioanggasta@gmail.com');
+        $mail->addAddress('giogioanggastaa@gmail.com');
 
         $mail->isHTML(true);
         $mail->Subject = "Masukkan & Saran ($subject)";

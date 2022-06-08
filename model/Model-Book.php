@@ -67,7 +67,7 @@ if(isset($_POST['btnUpload'])){
 
 
                 //Insert into db
-                $sql = "UPDATE transaksi SET buktiPembayaran = '$fileNameNew' , status = 'Menunggu Konfirmasi'
+                $sql = "UPDATE transaksi SET buktiPembayaran = '$fileNameNew' , status = 'Menunggu Konfirmasi' , waktuPembayaran = NOW()
                 WHERE idTransaksi = '$idPemesanan'";
                 mysqli_query($db , $sql);
 

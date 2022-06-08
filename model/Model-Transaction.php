@@ -40,7 +40,7 @@ if(isset($_POST['enterBtn'])){
     echo '<script type="text/javascript">' .
         'console.log(' .$jasa1. ');</script>';
 
-    header('location: ../view/MyBooking.php');
+    header('location: ../view/Transaction.php');
 }
 
 

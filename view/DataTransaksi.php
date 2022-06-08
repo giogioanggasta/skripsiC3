@@ -143,8 +143,6 @@
     <a href="DataPelanggan.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Pelanggan</a>
     <a href="DataJasa.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Jasa</a>
     <a href="DataBarang.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Produk</a>
-    <a href="DataPromo.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Promo</a>
-    <a href="DataBerita.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Berita</a>
     <a href="DataSupplier.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Supplier</a>
     <a href="DataMembership.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Membership</a>
     <a href="RequestedMembership.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Requested Membership</a>
@@ -196,7 +194,7 @@
 
 
       <?php
-      $sql = "SELECT * FROM transaksi";
+      $sql = "SELECT * FROM transaksi INNER JOIN user ON transaksi.idUser = user.idUser";
       $results = mysqli_query($db, $sql) or die(mysqli_error($db));
 
       while ($row = mysqli_fetch_array($results)) {
@@ -215,8 +213,10 @@
             <td><?php echo $row["catatanPelanggan"] ?></td>
             <td><?php echo $row["totalHarga"] ?></td>
             <td><img src="../model/uploadImage/<?php echo $row['buktiPembayaran'] ?>" style="width:25%" alt="Customer belum mengupload bukti pembayaran"> </td>
+            <td><?php echo $row["waktuPembayaran"] ?></td>
             <td><?php echo $row["status"] ?></td>
             <td><input type="hidden" name="idTransaksi" value="<?php echo $row["idTransaksi"]; ?>"></td>
+            <td><input type="hidden" name="emailTujuan" value="<?php echo $row["email"]; ?>"></td>
             <td><button type="submit" class="w3-button btn btn-primary" name="buttonTerima" style="border-color:#e7e7e7; background-color:steelblue">Terima</button>
             <td><button type='button' class="w3-button btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPembatalan-<?= $row['idTransaksi'] ?>" name="confirmBtn" style="border-color:#e7e7e7; background-color:red">Batalkan Pesanan</button></td>
 
@@ -243,6 +243,7 @@
                     <br>
 
                     <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                    <input type="hidden" name="emailTujuan" value="<?= $_SESSION['email'] ?>">
                       <button class="w3-button w3-block w3-dark-grey w3-section w3-padding" type="submit" name="btnBatal">ENTER</button>
                     </div>
                 </div>

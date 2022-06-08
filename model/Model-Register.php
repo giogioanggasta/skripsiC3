@@ -1,6 +1,7 @@
 <?php
 session_start();
 //inisialisasi variabel
+$role = "";
 $nama = "";
 $jenis_kelamin = "";
 $tanggal_lahir = "";
@@ -33,7 +34,7 @@ if($user){
 }
 if(count($errors) == 0){
 
-$querySignup = "INSERT INTO user (namaUser,jenisKelamin,tanggalLahir,noTelepon,email,password,tipeMembership,statusMembership) VALUES ('$nama' , '$jenis_kelamin', '$final_tanggal' , '$nomor_telepon' , '$email' , '$password' , 'Regular' , '')";
+$querySignup = "INSERT INTO user (role,namaUser,jenisKelamin,tanggalLahir,noTelepon,email,password,tipeMembership,statusMembership) VALUES ('customer', '$nama' , '$jenis_kelamin', '$final_tanggal' , '$nomor_telepon' , '$email' , '$password' , 'Regular' , '')";
 mysqli_query($db, $querySignup);
 header('location: ../view/Login.php');
 }

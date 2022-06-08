@@ -83,7 +83,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
     }
 
     .container {
-      margin-top: 10%;
+      margin-top: 15%;
     }
 
     .enterbtn a{
@@ -101,36 +101,28 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
 </head>
 
 <body>
-
   <?php include_once './_partials/Navbar.php'; ?>
-
   <a class="w3-display-middle" style="color:black;float: center; margin-top: -10%; text-decoration: none;">Membership</a>
   <?php
-  $sql = "SELECT * FROM membership";
-  $results = mysqli_query($db, $sql) or die(mysqli_error($db));
-
-  while ($row = mysqli_fetch_array($results)) {
-
+    $sql = "SELECT * FROM membership";
+    $results = mysqli_query($db, $sql) or die(mysqli_error($db));
   ?>
 
-    <div class="container">
+  <div class="container">
+   <? while ($row = mysqli_fetch_array($results)) {?>
       <div class="col">
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-4 col-md-6 col-lg-4">
           <div class="card">
+            <!-- <img src="../model/uploadImage/<?php echo $row['fotoMembership'] ?>" style="width:70%"><br> -->
             <div class="card-body">
               <h5 class="card-title"><?php echo $row["namaMembership"] ?> </h5>
               <p class="card-text"><?php echo $row["keteranganMembership"] ?> </p>
-              <p class="card-text">Rp. <?php echo $row["tarifMembership"] ?> per tahun</p>
             </div>
           </div>
         </div>
       </div>
+      <?php } ?>
     </div>
-
-  <?php
-
-  }
-  ?>
   <div class="enterbtn">
     <a href="ApplyMembership.php">Apply Membership</a>
   </div>

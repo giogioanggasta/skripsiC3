@@ -22,7 +22,8 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+  <title>Book</title>
+  <?php include_once './_partials/Header.php'; ?>
 
 <head>
     <title>Book</title>

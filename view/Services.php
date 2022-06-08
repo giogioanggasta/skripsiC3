@@ -186,7 +186,7 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
     }
 
     .container {
-      margin-top: 10%;
+      margin-top: 15%;
     }
   </style>
 </head>
@@ -199,17 +199,16 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
   <a class="w3-display-middle" style="color:black;float: center; margin-top: -10%; text-decoration: none;">Servis</a>
 
   <?php
-  $sql = "SELECT * FROM jasa";
-  $results = mysqli_query($db, $sql) or die(mysqli_error($db));
-
-  while ($row = mysqli_fetch_array($results)) {
-
+    $sql = "SELECT * FROM jasa";
+    $results = mysqli_query($db, $sql) or die(mysqli_error($db));
   ?>
-    <div class="container">
-      <div class="col">
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card">
-          <img src="../model/uploadImage/<?php echo $row['fotoJasa'] ?>" style="width:70%"><br>
+
+  <div class="container">
+   <? while ($row = mysqli_fetch_array($results)) {?>
+      <div class="col" >
+        <div class="col-4 col-md-6 col-lg-4">
+          <div class="card" style="border-width:none">
+            <img src="../model/uploadImage/<?php echo $row['fotoJasa'] ?>" style="width:70%"><br>
             <div class="card-body">
               <h5 class="card-title"><?php echo $row["namaJasa"] ?> </h5>
               <p class="card-text"><?php echo $row["keteranganJasa"] ?> </p>
@@ -218,11 +217,8 @@ $db = mysqli_connect('localhost', 'root', '', 'c3') or die("can't connect to dat
           </div>
         </div>
       </div>
+      <?php } ?>
     </div>
-  <?php
-
-  }
-  ?>
 
   <div class="footer">
     <img src="../images/logoc3.png" alt="promo1" class="d-block" style="width:10%; margin-left: 45%; padding-top: 1.5%">

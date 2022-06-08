@@ -21,7 +21,7 @@ if(isset($_POST['buttonTerima'])){
         $mail->Port = '587';
 
         $mail->setFrom('giogioanggasta@gmail.com');
-        $mail->addAddress('giogioanggastaa@gmail.com');
+        $mail->addAddress('giogioanggasta@gmail.com');
 
         $mail->isHTML(true);
         $mail->Subject = "Booking Diterima";
@@ -49,7 +49,7 @@ if(isset($_POST['btnBatal'])){
         $mail->Port = '587';
 
         $mail->setFrom("giogioanggasta@gmail.com");
-        $mail->addAddress("giogioanggastaa@gmail.com");
+        $mail->addAddress('giogioanggasta@gmail.com');
 
         $mail->isHTML(true);
         $mail->Subject = "Pemesanan Dibatalkan";

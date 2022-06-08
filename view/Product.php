@@ -79,7 +79,7 @@
     }
 
     .container {
-      margin-top: 10%;
+      margin-top: 15%;
     }
   </style>
 </head>
@@ -106,6 +106,7 @@
           </div>
         </div>
       </div>
+
       <?php } ?>
     </div>
 

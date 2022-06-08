@@ -148,6 +148,9 @@
         <input type="hidden" name="type" value="edit_profile">
 
         <img src="../images/user.png" style="margin-left:42.5%; margin-top: 5%">
+        <br>
+        <br><br>
+        <input type="text" name="tipeMembership" value="<?= $_SESSION['tipeMembership'] ?>" style="width: 25vh; height: 2.5vw; border: 0px solid #ccc; color: black; margin-left: 43.5%; font-size: 150%" disabled>
         <div class="signup">
             <table style="width:50%; color: black;">
                 <tr>
