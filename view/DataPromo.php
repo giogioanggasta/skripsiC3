@@ -1,10 +1,11 @@
-<?php include('../model/Model-DataBarang.php') ?>
+<?php include('../model/Model-DataPromo.php') ?>
 
 <!DOCTYPE html>
 
 
+
 <head>
-  <title>Data Barang</title>
+<title>Data Promo</title>
   <?php include_once './_partials/Header2.php'; ?>
   <style>
     @font-face {
@@ -136,17 +137,18 @@
 
 <div class="w3-bar w3-white w3-border" id="menu">
     <a href="Transaction.php" class="w3-bar-item"><img src="../images/logoc3.png" style="width:150px"></a>
-    <a href="DataTransaksi.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Transaksi Jasa</a>
-    <a href="DataTransaksiProduk.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; ">Transaksi Produk</a>
+    <a href="DataTransaksi.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Transaksi</a>
     <a href="DataPelanggan.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Pelanggan</a>
     <a href="DataJasa.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Jasa</a>
-    <a href="DataBarang.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; color:steelblue;">Produk</a>
+    <a href="DataBarang.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; ">Produk</a>
+    <a href="DataPromo.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; color:steelblue;">Promo</a>
+    <a href="DataBerita.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Berita</a>
     <a href="DataSupplier.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Supplier</a>
     <a href="DataMembership.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Membership</a>
     <a href="RequestedMembership.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Requested Membership</a>
   </div>
 
-  <a class="w3-display-middle" style="color:black;float: center; margin-top: -13%; text-decoration: none; font-size: 120%">Tabel Barang</a>
+  <a class="w3-display-middle" style="color:black;float: center; margin-top: -13%; text-decoration: none; font-size: 120%">Tabel Promo</a>
 
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalHapus" style="float:right; margin-top:8%; margin-right: 1%; background-color:steelblue">
     Hapus
@@ -165,10 +167,10 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-          <form class="w3-container" action="DataBarang.php" method="POST">
+          <form class="w3-container" action="DataPromo.php" method="POST">
             <br>
-            <label><b>Kode Barang yang ingin dihapus</b></label>
-            <input class="w3-input w3-border" type="text" placeholder="" name="kodeBarang">
+            <label><b>Kode Promo yang ingin dihapus</b></label>
+            <input class="w3-input w3-border" type="text" placeholder="" name="kodePromo">
             <br>
             <br>
             <br>
@@ -178,6 +180,22 @@
             </div>
           </form>
 
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- The Modal -->
+  <div class="modal fade" id="modalUbah">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Ubah Transaksi</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" name="btnUpdate"></button>
         </div>
 
       </div>
@@ -195,30 +213,26 @@
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Tambah Barang</h4>
+          <h4 class="modal-title">Tambah Promo</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body">
-          <form class="w3-container" action="DataBarang.php" method="POST" enctype="multipart/form-data">
+          <form class="w3-container" action="DataPromo.php" method="POST" enctype="multipart/form-data">
             <br>
-            <label><b>Kode Barang</b></label>
-            <input class="w3-input w3-border" type="text" placeholder="" name="tambahKode" required>
-            <label><b>Nama Barang</b></label>
-            <input class="w3-input w3-border" type="text" placeholder="" name="tambahNama" required>
-            <label><b>Harga Barang</b></label>
-            <input class="w3-input w3-border" type="text" placeholder="" name="tambahHarga" required>
-            <label><b>Kategori</b></label>
-            <input class="w3-input w3-border" type="text" placeholder="" name="tambahKategori" required>
-            <label><b>Stok Barang</b></label>
-            <input class="w3-input w3-border" type="text" placeholder="" name="tambahStok" required>
-            <label><b>Satuan</b></label>
-            <input class="w3-input w3-border" type="text" placeholder="" name="tambahSatuan" required>
-            <label><b>Keterangan Barang</b></label>
-            <input class="w3-input w3-border" type="text" placeholder="" name="tambahKeterangan" required>
-            <label><b>Foto Barang</b></label>
-            <input class="w3-input w3-border" type="file" name="tambahFoto">
+            <label><b>Kode Promo</b></label>
+            <input class="w3-input w3-border" type="text" placeholder="" name="tambahKode">
+            <label><b>Nama Promo</b></label>
+            <input class="w3-input w3-border" type="text" placeholder="" name="tambahNama">
+            <label><b>Waktu Mulai</b></label>
+            <input type="date" id="tanggalTransaksi" name="tambahWaktuMulai" min="<?php echo date("Y-m-d") ?>" style="width: 52.75vh; height: 2.5vw; border: 1px solid #ccc;">
+            <label><b>Waktu Selesai</b></label>
+            <input type="date" id="tanggalTransaksi" name="tambahWaktuSelesai" min="<?php echo date("Y-m-d") ?>" style="width: 52.75vh; height: 2.5vw; border: 1px solid #ccc;">
+            <label><b>Keterangan Promo</b></label>
+            <input class="w3-input w3-border" type="text" placeholder="" name="tambahKeterangan">
+            <label><b>Foto Promo</b></label>
+            <input class="w3-input w3-border" type="file" placeholder="" name="tambahFoto">
             <br>
             <br>
             <br>
@@ -232,8 +246,9 @@
 
       </div>
     </div>
+    </form>
   </div>
-  </form>
+
 
 
 
@@ -241,78 +256,69 @@
     <table class="w3-table-all w3-center w3-hoverable" id="tabelcust" style="font-family: texts; font-size: 15px; width: 90%">
       <thead>
         <tr class="w3-light-grey">
-          <th>ID Barang</th>
-          <th>Kode Barang</th>
-          <th>Nama Barang</th>
-          <th>Foto Barang</th>
-          <th>Harga Barang</th>
-          <th>Keterangan Barang</th>
-          <th>Kategori</th>
-          <th>Stok Barang</th>
-          <th>Satuan</th>
+          <th>ID Promo</th>
+          <th>Kode Promo</th>
+          <th>Nama Promo</th>
+          <th>Foto Promo</th>
+          <th>Keterangan Promo</th>
+          <th>Waktu Mulai</th>
+          <th>Waktu Selesai</th>
+
         </tr>
       </thead>
 
+
       <?php
-      $sql = "SELECT * FROM barang";
+      $sql = "SELECT * FROM promo";
       $results = mysqli_query($db, $sql) or die(mysqli_error($db));
+      $check = mysqli_num_rows($results);
+      while ($row = mysqli_fetch_array($results)) {
 
-        while ($row = mysqli_fetch_array($results)) {
 
-        
 
       ?>
 
 
-<form class="w3-container" action="DataBarang.php" method="POST" enctype="multipart/form-data">
-        <tr>
-            <td><?php echo $row["idBarang"] ?></td>
-            <td><?php echo $row["kodeBarang"] ?></td>
-            <td><?php echo $row["namaBarang"] ?></td>
-            <td><img src="../model/uploadImage/<?php echo $row['fotoBarang']?>" style="width:25%"> </td>
-            <td><?php echo $row["hargaBarang"] ?></td>
-            <td><?php echo $row["keteranganBarang"] ?></td>
-            <td><?php echo $row["kategori"] ?></td>
-            <td><?php echo $row["stokBarang"] ?></td>
-            <td><?php echo $row["satuan"] ?></td>
-            <td><input type="hidden" name="idBarang" value="<?php echo $row["idBarang"];?>"></td>
-            <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalUbah-<?=$row["idBarang"] ?>' name='buttonEdit' style="background-color:steelblue">Edit</button></td>
-        </tr>
+        <form class="w3-container" action="DataPromo.php" method="POST" enctype="multipart/form-data">
+          <tr>
+            <td><?php echo $row["idPromo"] ?></td>
+            <td><?php echo $row["kodePromo"] ?></td>
+            <td><?php echo $row["namaPromo"] ?></td>
+            <td><img src="../model/uploadImage/<?php echo $row['fotoPromo'] ?>" style="width:25%"> </td>
+            <td><?php echo $row["keteranganPromo"] ?></td>
+            <td><?php echo $row["waktuMulai"] ?></td>
+            <td><?php echo $row["waktuSelesai"] ?></td>
+            <td><input type="hidden" name="idPromo" value="<?php echo $row["idPromo"]; ?>"></td>
+            <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalUbah-<?= $row["idPromo"] ?>' name='buttonEdit' style="background-color:steelblue">Edit</button></td>
+          </tr>
+          <!-- The Modal -->
+          <div class="modal fade" id="modalUbah-<?= $row["idPromo"] ?>">
+            <div class="modal-dialog">
+              <div class="modal-content">
 
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Ubah Promo</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
+                <!-- Modal body -->
+                <div class="modal-body">
 
-        <!-- The Modal -->
-        <div class="modal fade" id="modalUbah-<?=$row["idBarang"] ?>" >
-          <div class="modal-dialog">
-            <div class="modal-content">
-
-              <!-- Modal Header -->
-              <div class="modal-header">
-                <h4 class="modal-title">Edit Barang</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-
-              <!-- Modal body -->
-              <div class="modal-body">
-                
                   <br>
-                  <label><b>Kode Barang</b></label>
-                  <input class="w3-input w3-border" type="text" placeholder="" name="editKode" value="<?php echo $row['kodeBarang']?>" required>
-                  <label><b>Nama Barang</b></label>
-                  <input class="w3-input w3-border" type="text" placeholder="" name="editNama" value="<?php echo $row['namaBarang']?>" required>
-                  <label><b>Harga Barang</b></label>
-                  <input class="w3-input w3-border" type="text" placeholder="" name="editHarga" value="<?php echo $row['hargaBarang']?>" required>
-                  <label><b>Kategori</b></label>
-                  <input class="w3-input w3-border" type="text" placeholder="" name="editKategori" value="<?php echo $row['kategori']?>" required>
-                  <label><b>Stok Barang</b></label>
-                  <input class="w3-input w3-border" type="text" placeholder="" name="editStok" value="<?php echo $row['stokBarang']?>" required>
-                  <label><b>Satuan</b></label>
-                  <input class="w3-input w3-border" type="text" placeholder="" name="editSatuan" value="<?php echo $row['satuan']?>" required>
-                  <label><b>Keterangan Barang</b></label>
-                  <input class="w3-input w3-border" type="text" placeholder="" name="editKeterangan" value="<?php echo $row['keteranganBarang']?>" required>
-                  <label><b>Foto Barang</b></label>
-                  <input class="w3-input w3-border" type="file" name="editFoto" >
-                  <input type="hidden" name="idBarang" value="<?php echo $row["idBarang"];?>">
+                  <label><b>Kode Promo</b></label>
+                  <input class="w3-input w3-border" type="text" placeholder="" name="editKode" value="<?php echo $row['kodePromo']?>" required>
+                  <label><b>Nama Promo</b></label>
+                  <input class="w3-input w3-border" type="text" placeholder="" name="editNama" value="<?php echo $row['namaPromo']?>" required>
+                  <label><b>Keterangan Promo</b></label>
+                  <input class="w3-input w3-border" type="text" placeholder="" name="editKeterangan" value="<?php echo $row['keteranganPromo']?>" required>
+                  <label><b>Waktu Mulai</b></label>
+                  <input type="date" id="tanggalTransaksi" name="editWaktuMulai" value="<?php echo $row['waktuMulai']?>"  min="<?php echo date("Y-m-d") ?>" style="width: 56.75vh; height: 2.5vw; border: 1px solid #ccc;" required>
+                  <label><b>Waktu Selesai</b></label>
+                  <input type="date" id="tanggalTransaksi" name="editWaktuSelesai"  value="<?php echo $row['waktuSelesai']?>"  min="<?php echo date("Y-m-d") ?>" style="width: 56.75vh; height: 2.5vw; border: 1px solid #ccc;" required>
+                  <label><b>Foto Promo</b></label>
+                  <input class="w3-input w3-border" type="file" name="editFoto">
+                  <input type="hidden" name="idPromo" value="<?php echo $row["idPromo"]; ?>">
                   <br>
                   <br>
                   <br>
@@ -320,21 +326,25 @@
                   <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
                     <button class="w3-button w3-block w3-dark-grey w3-section w3-padding" type="submit" name="btnEdit">ENTER</button>
                   </div>
-
-
+                </div>
               </div>
-
             </div>
-          </div>
-        </div>
         </form>
-        <?php
 
-        
-}
 
-?>
+      <?php
+      }
+
+      ?>
+
     </table>
+
+
+
+
+
+
+
   </div>
 
 

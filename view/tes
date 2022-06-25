@@ -1,0 +1,38 @@
+produk1 = oli
+kuantitas1 = 12
+produk2 = mirror glitter
+kuantitas2 = 1
+produk3 = gantungan kunci bulldog
+kuantitas3 = 3
+
+
+
+update barang set stokBarang = 
+
+
+FORM html 
+produk1 : oli 
+kuantitas : 1
+ 
+produk2 L mirror 
+kuantitas : 1 
+
+produk 3 : gantungankunci 
+kuantitas3 : 3 
+
+1. update stok produk1 supaya dikurangin sama kuantitas1 
+  a. ambil stokgudang dari produk1 
+    -> SELECT * FROM barang where namabarang = "produk1" -> tes di phpmyadmin
+      | namabarag | stok |... |. ... | y 
+  x  [0]     oli         12  
+    [1]     asu        10
+    -> itu bakal ngereturn array 2d rows[0]['stok'] -> tes di php
+    -> stokgudang = 12
+
+    -> UPDATE barang set stokbarang = (stokgudang - kuantitas1) where namabarang='produk1' -> tes di php myadmin
+
+2. cek produk2 dan kuantitas2 
+   ->kalo kosong skip
+   ->kalo gak lakuin di step 1 tapi valueform si produk2 dan kuantitas2 
+
+3. sama 

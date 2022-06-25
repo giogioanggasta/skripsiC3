@@ -22,32 +22,32 @@ header("Content-Disposition: attachment; filename=Data Transaksi.xls");
             <th>ID Transaksi</th>
             <th>Tanggal Transaksi</th>
             <th>Waktu Transaksi</th>
-            <th>Jenis Mobil</th>
-            <th>Plat Kendaraan</th>
-            <th>Pilihan Jasa 1</th>
-            <th>Pilihan Jasa 2</th>
-            <th>Pilihan Jasa 3</th>
-            <th>Catatan Pelanggan</th>
+            <th>Pilihan Produk 1</th>
+            <th>Kuantitas Produk 1</th>
+            <th>Pilihan Produk 2</th>
+            <th>Kuantitas Produk 2</th>
+            <th>Pilihan Produk 3</th>
+            <th>Kuantitas Produk 3</th>
             <th>Total Harga</th>
         </tr>
 
         <?php
-        $sqlHasilTabel = "SELECT * FROM transaksi WHERE status = 'Pemesanan Diterima'";
+        $sqlHasilTabel = "SELECT * FROM transaksi_barang";
         $restabel = mysqli_query($db, $sqlHasilTabel) or die(mysqli_error($db));
         $check = mysqli_num_rows($restabel);
         while ($row = mysqli_fetch_array($restabel)) {
         ?>
             <tr>
-                <td><?php echo $row['idTransaksi'] ?></td>
-                <td><?php echo $row['tanggalTransaksi'] ?></td>
-                <td><?php echo $row['waktuTransaksi'] ?></td>
-                <td><?php echo $row['jenisMobil'] ?></td>
-                <td><?php echo $row['platKendaraan'] ?></td>
-                <td><?php echo $row['jasa1'] ?></td>
-                <td><?php echo $row['jasa2'] ?></td>
-                <td><?php echo $row['jasa3'] ?></td>
-                <td><?php echo $row['catatanPelanggan'] ?></td>
-                <td><?php echo $row['totalHarga'] ?></td>
+                <td><?php echo $row["idTransaksi"] ?></td>
+                <td><?php echo $row["tanggalTransaksi"] ?></td>
+                <td><?php echo $row["waktuTransaksi"] ?></td>
+                <td><?php echo $row["produk1"] ?></td>
+                <td><?php echo $row["kuantitas1"] ?></td>
+                <td><?php echo $row["produk2"] ?></td>
+                <td><?php echo $row["kuantitas2"] ?></td>
+                <td><?php echo $row["produk3"] ?></td>
+                <td><?php echo $row["kuantitas3"] ?></td>
+                <td><?php echo $row["totalHarga"] ?></td>
             </tr>
 
         <?php

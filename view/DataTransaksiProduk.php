@@ -139,8 +139,8 @@
 
 <div class="w3-bar w3-white w3-border" id="menu">
     <a href="Transaction.php" class="w3-bar-item"><img src="../images/logoc3.png" style="width:150px"></a>
-    <a href="DataTransaksi.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; color:steelblue;">Transaksi Jasa</a>
-    <a href="DataTransaksiProduk.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; ">Transaksi Produk</a>
+    <a href="DataTransaksi.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; ">Transaksi Jasa</a>
+    <a href="DataTransaksiProduk.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none; color:steelblue;">Transaksi Produk</a>
     <a href="DataPelanggan.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Pelanggan</a>
     <a href="DataJasa.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Jasa</a>
     <a href="DataBarang.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Produk</a>
@@ -149,9 +149,9 @@
     <a href="RequestedMembership.php" class="w3-bar-item" style="float: left; margin-top:1.5%; text-decoration: none;">Requested Membership</a>
   </div>
 
-  <a class="w3-display-middle" style="color:black;float: center; margin-top: -13%; text-decoration: none; font-size: 120%">Tabel Transaksi</a>
+  <a class="w3-display-middle" style="color:black;float: center; margin-top: -13%; text-decoration: none; font-size: 120%">Tabel Transaksi Produk</a>
 
-  <a target="_blank" href="DownloadExcelTransaksi.php" style="margin-left: -48px;"> <button style="border: none;
+  <a target="_blank" href="DownloadExcelTransaksiProduk.php" style="margin-left: -48px;"> <button style="border: none;
                 outline: 0;
                 padding: 6px;
                 color: white;
@@ -176,19 +176,13 @@
           <th>ID Transaksi</th>
           <th>Tanggal Transaksi</th>
           <th>Waktu Transaksi</th>
-          <th>Jenis Mobil</th>
-          <th>Plat Kendaraan</th>
-          <th>Pilihan Jasa 1</th>
-          <th>Pilihan Jasa 2</th>
-          <th>Pilihan Jasa 3</th>
-          <th>Catatan Pelanggan</th>
+          <th>Pilihan Produk 1</th>
+          <th>Kuantitas Produk 1</th>
+          <th>Pilihan Produk 2</th>
+          <th>Kuantitas Produk 2</th>
+          <th>Pilihan Produk 3</th>
+          <th>Kuantitas Produk 3</th>
           <th>Total Harga</th>
-          <th>Bukti Pembayaran</th>
-          <th>Waktu Pembayaran</th>
-          <th>Status</th>
-          <th></th>
-          <th></th>
-          <th></th>
         </tr>
 
 
@@ -196,68 +190,26 @@
 
 
       <?php
-      $sql = "SELECT * FROM transaksi ";
+      $sql = "SELECT * FROM transaksi_barang";
       $results = mysqli_query($db, $sql) or die(mysqli_error($db));
 
       while ($row = mysqli_fetch_array($results)) {
 
       ?>
-        <form action="DataTransaksi.php" method="post">
+        <form action="DataTransaksiProduk.php" method="post">
           <tr>
             <td><?php echo $row["idTransaksi"] ?></td>
             <td><?php echo $row["tanggalTransaksi"] ?></td>
             <td><?php echo $row["waktuTransaksi"] ?></td>
-            <td><?php echo $row["jenisMobil"] ?></td>
-            <td><?php echo $row["platKendaraan"] ?></td>
-            <td><?php echo $row["jasa1"] ?></td>
-            <td><?php echo $row["jasa2"] ?></td>
-            <td><?php echo $row["jasa3"] ?></td>
-            <td><?php echo $row["catatanPelanggan"] ?></td>
+            <td><?php echo $row["produk1"] ?></td>
+            <td><?php echo $row["kuantitas1"] ?></td>
+            <td><?php echo $row["produk2"] ?></td>
+            <td><?php echo $row["kuantitas2"] ?></td>
+            <td><?php echo $row["produk3"] ?></td>
+            <td><?php echo $row["kuantitas3"] ?></td>
             <td><?php echo $row["totalHarga"] ?></td>
-            <td><img src="../model/uploadImage/<?php echo $row['buktiPembayaran'] ?>" style="width:25%" alt="Customer belum mengupload bukti pembayaran"> </td>
-            <td><?php echo $row["waktuPembayaran"] ?></td>
-            <td><?php echo $row["status"] ?></td>
-            <td><input type="hidden" name="idTransaksi" value="<?php echo $row["idTransaksi"]; ?>"></td>
-            <td><input type="hidden" name="emailTujuan" value="<?php echo $row["email"]; ?>"></td>
-            <td><input type="hidden" name="nama" value="<?php echo $row["namaUser"]; ?>"></td>
-            <td><input type="hidden" name="tanggalTransaksi" value="<?php echo $row["tanggalTransaksi"]; ?>"></td>
-            <td><input type="hidden" name="waktuTransaksi" value="<?php echo $row["waktuTransaksi"]; ?>"></td>
-            <td><button type="submit" class="w3-button btn btn-primary" name="buttonTerima" style="border-color:#e7e7e7; background-color:steelblue">Terima</button>
-            <td><button type='button' class="w3-button btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPembatalan-<?= $row['idTransaksi'] ?>" name="confirmBtn" style="border-color:#e7e7e7; background-color:red">Batalkan Pesanan</button></td>
-
-
           </tr>
-          <div class="modal fade" id="modalPembatalan-<?= $row["idTransaksi"] ?>">
-            <div class="modal-dialog">
-              <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Masukkan Alasan Pembatalan</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-
-                    <br>
-                    <label><b>Alasan Pembatalan</b></label>
-                    <input class="w3-input w3-border" type="text" placeholder="" name="alasanPembatalan">
-                    <br>
-                    <br>
-                    <br>
-
-                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                    <input type="hidden" name="emailTujuan" value="<?php echo $row["email"]; ?>">
-                    
-
-                      <button class="w3-button w3-block w3-dark-grey w3-section w3-padding" type="submit" name="btnBatal">ENTER</button>
-                    </div>
-                </div>
-              </div>
-            </div>
-      </div>
-        </form>
+          </form>
        
       <?php
 

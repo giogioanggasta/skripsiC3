@@ -11,21 +11,28 @@ $alert = '';
 
 if(isset($_POST['buttonTerima'])){
     $emailTujuan = $_POST['emailTujuan'];
+    $nama = $_POST['nama'];
+    $tanggalTransaksi = date_create($_POST['tanggalTransaksi']);
+    $waktuTransaksi = date_create($_POST['waktuTransaksi']);
 
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'giogioanggasta@gmail.com';
-        $mail->Password = 'Jerapah!2';
+        $mail->Username = 'carcarecentermedan@gmail.com';
+        $mail->Password = 'twvcphdxxjsghxvp';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = '587';
 
         $mail->setFrom('giogioanggasta@gmail.com');
-        $mail->addAddress('giogioanggasta@gmail.com');
+        $mail->addAddress($emailTujuan);
 
         $mail->isHTML(true);
-        $mail->Subject = "Booking Diterima";
-        $mail->Body = "<h3>Pemesanan anda diterima, silahkan datang 15 menit sebelum waktu pesanan. </h3>";
+        $mail->Subject = "Booking berhasil";
+        $mail->Body .= "<h4 style='text-decoration:underline'>Info Pemesanan anda </h4>";
+        $mail->Body = "<h4>Pembayaran sudah diterima.</h4>";
+        $mail->Body .= "<h4>Nama Pemesan: </h4>".$nama.
+        "<h4>Tanggal pemesanan: </h4>".date_format($tanggalTransaksi, "Y-m-d")."<h4>Jam Pemesanan: </h4>".date_format($waktuTransaksi, "H:i:s")."<br>"."<br>";
+        $mail->Body .= "Terima kasih telah memesan!";
         $mail->Body .= "<h5> C3 <br> Address : JL. Monginsidi, 51, Anggrung, Medan Polonia, Kota Medan, Sumatera Utara 20222 </h5>";
         $mail->send();
         $alert = '<span>Message dikirim!</span>';
@@ -43,17 +50,17 @@ if(isset($_POST['btnBatal'])){
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'giogioanggasta@gmail.com';
-        $mail->Password = 'Jerapah!2';
+        $mail->Username = 'carcarecentermedan@gmail.com';
+        $mail->Password = 'twvcphdxxjsghxvp';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = '587';
 
-        $mail->setFrom("giogioanggasta@gmail.com");
-        $mail->addAddress('giogioanggasta@gmail.com');
+        $mail->setFrom('carcarecentermedan@gmail.com');
+        $mail->addAddress($emailTujuan);
 
         $mail->isHTML(true);
         $mail->Subject = "Pemesanan Dibatalkan";
-        $mail->Body = "<h3>Kami meminta maaf karena pesanan anda terpaksa harus kami batalkan. Pembatalan dilakukan karena jadwal yang Anda pilih telah penuh, silahkan pilih jadwal lain yang tersedia, Terima kasih.</h3>";
+        $mail->Body = "<h3>Alasan Pembatalan: </h3>".$alasan;
         $mail->Body .= "<h5> C3 <br> Address : JL. Monginsidi, 51, Anggrung, Medan Polonia, Kota Medan, Sumatera Utara 20222 </h5>";
         $mail->send();
         $alert = '<span>Message dikirim!</span>';

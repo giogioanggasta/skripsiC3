@@ -93,3 +93,15 @@ if (isset($_POST['btnBatal'])) {
     mysqli_query($db , $sql);
     header("Location: MyBooking.php?pemesananDibatalkan");
 }
+
+if(isset($_POST['btnReschedule'])){
+    $waktuTransaksi = $_POST['waktuTransaksi'];
+    $final_waktu = date('H:i', strtotime($_POST['waktuTransaksi']));
+    $idTransaksi = mysqli_real_escape_string($db , $_POST['idTransaksi']);
+
+    $queryReschedule = "UPDATE transaksi SET waktuTransaksi = '$waktuTransaksi', status = 'Menunggu Konfirmasi' WHERE idTransaksi = '$idTransaksi'";
+    mysqli_query($db, $queryReschedule);
+
+    header('location: ../view/MyBooking.php?rescheduleBerhasil');
+}
+

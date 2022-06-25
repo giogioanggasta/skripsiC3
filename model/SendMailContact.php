@@ -1,9 +1,9 @@
 <?php
 use phpmailer\phpmailer\phpmailer;
 
-require_once 'phpmailer/Exception.php';
-require_once 'phpmailer/PHPMailer.php';
-require_once 'phpmailer/SMTP.php';
+require_once 'phpmailer/includes/Exception.php';
+require_once 'phpmailer/includes/PHPMailer.php';
+require_once 'phpmailer/includes/SMTP.php';
 
 $mail = new PHPMailer(true);
 
@@ -18,20 +18,22 @@ if(isset($_POST['submitMasukan'])){
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'unparpasaga@gmail.com';
-        $mail->Password = 'raisA66900';
+        $mail->Username = 'carcarecentermedan@gmail.com';
+        $mail->Password = 'twvcphdxxjsghxvp';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = '587';
 
-        $mail->setFrom('giogioanggasta@gmail.com');
-        $mail->addAddress('giogioanggastaa@gmail.com');
+        $mail->setFrom('carcarecentermedan@gmail.com');
+        $mail->addAddress('carcarecentermedan@gmail.com');
 
         $mail->isHTML(true);
         $mail->Subject = "Masukkan & Saran ($subject)";
         $mail->Body = "<h3>Sender: $sender <br> Message: $message </h3>";
 
         $mail->send();
-        $alert = '<span>Message dikirim! terima kasih atas pesan anda. </span';
+        $alert = '<span>Message dikirim! terima kasih atas masukannya. </span';
+        header("Location: Home-logged.php?berhasilkirim");
+
     }
 
     catch(Exception $e){

@@ -1,4 +1,5 @@
 <?php include('../model/Model-Book.php') ?>
+<?php include('../model/SendMailAdmin.php') ?>
 
 <!DOCTYPE html>
 
@@ -78,8 +79,8 @@
 
     #cancelBtn {
       float: right;
-      margin-top: -12%;
-      margin-right: 15%;
+      margin-top: -8%;
+      margin-right: 14.5%;
       margin-left: -5%;
     }
 
@@ -87,6 +88,12 @@
       float: right;
       margin-top: -16%;
       margin-right: 13%;
+    }
+
+    #rescheduleBtn {
+      float: right;
+      margin-top: -12%;
+      margin-right: 14.5%;
     }
 
     .footer {
@@ -145,14 +152,46 @@
           'console.log(' . $jasa1 . ');</script>';
         ?>
       </div>
+      <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalReschedule-<?= $row['idTransaksi'] ?>" name="rescheduleBtn" id="rescheduleBtn">Reschedule</button>
+
+      <form action="MyBooking.php" method="post" enctype="multipart/form-data">
+        <div class="modal" id="modalReschedule-<?= $row["idTransaksi"] ?>">
+          <input type="hidden" id="idTransaksi" name="idTransaksi" value='<?php echo $row["idTransaksi"]; ?>'>
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Reschedule Jadwal</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <input type="hidden" id="idTransaksi" name="idTransaksi" value='<?php echo $row["idTransaksi"]; ?>'>
+                <input type="hidden" id="tanggalTransaksi" name="tanggalTransaksi" value='<?php echo $row["tanggalTransaksi"]; ?>'>
+                <input type="hidden" id="waktuTransaksi" name="waktuTransaksi" value='<?php echo $row["waktuTransaksi"]; ?>'>
+                Harap cek jadwal yang tersedia sebelum melakukan Reschedule<br>
+                <label><b>Jadwal baru yang diinginkan</b></label>
+                <input type="time" id="waktuTransaksi" name="waktuTransaksi" step="3600" min="08:00" max="16:00" style="width: 52vh; height: 2.5vw; border: 1px solid #ccc;">
+                <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                  <button class="w3-button w3-block w3-dark-grey w3-section w3-padding" type="submit" name="btnReschedule">ENTER</button>
+                </div>
+              </div>
 
 
+            </div>
+          </div>
+        </div>
+      </form>
 
       <button type="submit" class="w3-button w3-red" data-bs-toggle="modal" data-bs-target="#modalBatalkan-<?= $row['idTransaksi'] ?>" name="cancelBtn" id="cancelBtn">Batalkan</button>
 
       <form action="MyBooking.php" method="post" enctype="multipart/form-data">
         <div class="modal" id="modalBatalkan-<?= $row["idTransaksi"] ?>">
           <input type="hidden" id="idTransaksi" name="idTransaksi" value='<?php echo $row["idTransaksi"]; ?>'>
+          <input type="hidden" id="tanggalTransaksi" name="tanggalTransaksi" value='<?php echo $row["tanggalTransaksi"]; ?>'>
+          <input type="hidden" id="waktuTransaksi" name="waktuTransaksi" value='<?php echo $row["waktuTransaksi"]; ?>'>
           <div class="modal-dialog">
             <div class="modal-content">
 
@@ -179,6 +218,8 @@
       <form action="MyBooking.php" method="post" enctype="multipart/form-data">
         <div class="modal" id="modalConfirmation-<?= $row["idTransaksi"] ?>">
           <input type="hidden" id="idTransaksi" name="idTransaksi" value='<?php echo $row["idTransaksi"]; ?>'>
+          <input type="hidden" id="tanggalTransaksi" name="tanggalTransaksi" value='<?php echo $row["tanggalTransaksi"]; ?>'>
+          <input type="hidden" id="waktuTransaksi" name="waktuTransaksi" value='<?php echo $row["waktuTransaksi"]; ?>'>
           <div class="modal-dialog">
             <div class="modal-content">
 
